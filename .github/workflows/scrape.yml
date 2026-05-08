@@ -1,0 +1,51 @@
+name: Scrape jobs
+
+on:
+  schedule:
+    - cron: "0 8,20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scrape job APIs and ATS providers
+        env:
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
+          SMARTRECRUITERS_API_KEY: ${{ secrets.SMARTRECRUITERS_API_KEY }}
+          WORKABLE_API_KEY: ${{ secrets.WORKABLE_API_KEY }}
+          TEAMTAILOR_API_KEY: ${{ secrets.TEAMTAILOR_API_KEY }}
+          TEAMTAILOR_COMPANIES: ${{ vars.TEAMTAILOR_COMPANIES }}
+          BREEZY_API_KEY: ${{ secrets.BREEZY_API_KEY }}
+          BREEZY_COMPANIES: ${{ vars.BREEZY_COMPANIES }}
+          GREENHOUSE_BOARDS: ${{ vars.GREENHOUSE_BOARDS }}
+          LEVER_SITES: ${{ vars.LEVER_SITES }}
+          ASHBY_BOARDS: ${{ vars.ASHBY_BOARDS }}
+          SMARTRECRUITERS_COMPANIES: ${{ vars.SMARTRECRUITERS_COMPANIES }}
+          WORKABLE_ACCOUNTS: ${{ vars.WORKABLE_ACCOUNTS }}
+          RECRUITEE_COMPANIES: ${{ vars.RECRUITEE_COMPANIES }}
+          SPANISH_SEARCH_QUERIES: ${{ vars.SPANISH_SEARCH_QUERIES }}
+          SPANISH_JOB_QUERIES: ${{ vars.SPANISH_JOB_QUERIES }}
+          LATAM_SPAIN_LOCATIONS: ${{ vars.LATAM_SPAIN_LOCATIONS }}
+        run: python scraper/api_scraper.py
+
+      - name: Commit generated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update scraped jobs"
+          file_pattern: "docs/jobs.json scraper/data/jobs.json"
