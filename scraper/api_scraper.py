@@ -59,6 +59,75 @@ RECRUITEE_COMPANIES = env_list('RECRUITEE_COMPANIES', [
 TEAMTAILOR_COMPANIES = env_list('TEAMTAILOR_COMPANIES', [])
 BREEZY_COMPANIES = env_list('BREEZY_COMPANIES', [])
 
+SPANISH_MARKET_TERMS = [
+    'spanish', 'spanish speaking', 'spanish required', 'spanish speaker',
+    'bilingual spanish', 'español', 'espanol', 'idioma español', 'castellano',
+    'remoto', 'teletrabajo', 'trabajo remoto', 'latam', 'latin america',
+    'latinoamerica', 'latinoamérica', 'hispanic', 'americas', 'worldwide',
+    'anywhere', 'global', 'remote', 'remote anywhere', 'remote-first',
+    'spain', 'españa', 'madrid', 'barcelona', 'valencia', 'sevilla',
+    'mexico', 'méxico', 'ciudad de mexico', 'cdmx', 'monterrey',
+    'guadalajara', 'chile', 'santiago', 'colombia', 'bogota', 'bogotá',
+    'medellin', 'medellín', 'argentina', 'buenos aires', 'peru', 'perú',
+    'lima', 'uruguay', 'montevideo', 'ecuador', 'quito', 'guayaquil',
+    'costa rica', 'panama', 'panamá', 'dominican republic', 'república dominicana',
+    'puerto rico', 'guatemala', 'el salvador', 'bolivia', 'paraguay',
+]
+
+SPANISH_SEARCH_QUERIES = env_list('SPANISH_SEARCH_QUERIES', [
+    'remote spanish speaking',
+    'remote spanish required',
+    'spanish required remote',
+    'bilingual spanish english remote',
+    'latam remote',
+    'latin america remote',
+    'remote spain',
+    'trabajo remoto español',
+    'teletrabajo español',
+    'remoto latam',
+    'remoto españa',
+    'ventas remoto español',
+    'marketing remoto español',
+    'customer success spanish remote',
+    'soporte español remoto',
+    'operaciones remoto español',
+    'project manager spanish remote',
+    'product manager spanish remote',
+    'software engineer latam remote',
+    'frontend developer latam remote',
+    'backend developer latam remote',
+    'data analyst spanish remote',
+    'finance spanish remote',
+    'recruiter spanish remote',
+    'legal spanish remote',
+])
+
+SPANISH_JOB_QUERIES = env_list('SPANISH_JOB_QUERIES', [
+    'remoto', 'teletrabajo', 'español', 'spanish', 'bilingüe',
+    'latam', 'latin america', 'españa', 'méxico', 'chile', 'colombia',
+    'argentina', 'perú', 'uruguay', 'ventas', 'marketing', 'soporte',
+    'customer success', 'operaciones', 'desarrollador', 'developer',
+    'ingeniero', 'software engineer', 'datos', 'data analyst', 'diseño',
+    'recursos humanos', 'finanzas', 'contable', 'legal', 'abogado',
+    'project manager', 'product manager',
+])
+
+LATAM_SPAIN_LOCATIONS = env_list('LATAM_SPAIN_LOCATIONS', [
+    'Remote', 'Latam', 'Latin America', 'Spain', 'España', 'Madrid',
+    'Barcelona', 'Mexico', 'México', 'Chile', 'Santiago', 'Colombia',
+    'Bogota', 'Bogotá', 'Argentina', 'Buenos Aires', 'Peru', 'Perú',
+    'Lima', 'Uruguay', 'Montevideo',
+])
+
+
+def spanish_market_matches(*parts):
+    text = ' '.join(str(part or '') for part in parts).lower()
+    return [term for term in SPANISH_MARKET_TERMS if term in text]
+
+
+def is_spanish_market_relevant(*parts):
+    return bool(spanish_market_matches(*parts))
+
 # ─── Auto-categorization ───
 CATEGORY_KEYWORDS = {
     'tecnologia': [
@@ -245,6 +314,7 @@ def make_job(source, source_url, title, company, location, remote, job_type, sal
              description, posted_at, apply_url=None, tags=None):
     """Create a normalized job dict."""
     cats = auto_categorize(title, description, tags)
+    market_terms = spanish_market_matches(title, company, location, description, ' '.join(tags or []))
     loc_lower = (location or '').lower()
     is_remote = remote or any(w in loc_lower for w in ['remote', 'remoto', 'work from home', 'wfh', 'teletrabajo'])
     return {
@@ -263,6 +333,10 @@ def make_job(source, source_url, title, company, location, remote, job_type, sal
         'foundAt': datetime.now(timezone.utc).isoformat(),
         'categories': cats,
         'tags': (tags or [])[:8],
+        'market': {
+            'spanishLatamSpain': bool(market_terms),
+            'matches': market_terms[:8],
+        },
         'urlValid': True,
     }
 
@@ -290,15 +364,7 @@ def scrape_remotive():
                 loc = j.get('candidate_required_location', '')
                 # Broaden filter: remote + worldwide/americas/europe = relevant
                 combined = f"{title} {desc} {loc}".lower()
-                has_spanish = any(w in combined for w in [
-                    'spanish', 'español', 'espanol', 'bilingual', 'latam',
-                    'latin america', 'hispanic', 'chile', 'colombia', 'mexico',
-                    'argentina', 'peru', 'spain', 'españa', 'madrid', 'barcelona',
-                    'bogota', 'lima', 'buenos aires', 'santiago', 'monterrey',
-                    'medellin', 'guadalajara', 'valencia', 'sevilla',
-                    'worldwide', 'americas', 'europe', 'anywhere', 'global',
-                    'africa', 'asia pacific', 'us canada',
-                ])
+                has_spanish = is_spanish_market_relevant(combined)
                 if not has_spanish:
                     continue
                 jobs.append(make_job(
@@ -343,12 +409,7 @@ def scrape_arbeitnow():
                     continue
                 seen.add(slug)
                 combined = f"{j.get('title','')} {j.get('company_name','')} {j.get('location','')} {strip_html(j.get('description',''))}".lower()
-                has_spanish = any(w in combined for w in [
-                    'spanish', 'español', 'bilingual', 'latam', 'hispanic',
-                    'chile', 'colombia', 'mexico', 'argentina', 'peru',
-                    'spain', 'españa', 'worldwide', 'anywhere', 'remote',
-                    'americas', 'europe', 'africa', 'asia',
-                ])
+                has_spanish = is_spanish_market_relevant(combined)
                 if not has_spanish:
                     continue
                 jobs.append(make_job(
@@ -378,7 +439,7 @@ def scrape_arbeitnow():
 
 def scrape_torre():
     jobs = []
-    queries = ['remote', 'spanish', 'latam', 'sales', 'operations', 'marketing', 'finance', 'engineer', 'design', 'data', 'manager']
+    queries = SPANISH_JOB_QUERIES
     for q in queries:
         try:
             status, data = http_get(f'https://api.torre.co/opportunities/_search/?keyword={q}&remote=true&size=25&offset=0')
@@ -437,12 +498,7 @@ def scrape_remoteok():
             loc = j.get('location', '')
             combined = f"{title} {desc} {loc} {' '.join(j.get('tags', []))}".lower()
             # RemoteOK is all-remote — filter for Spanish/LATAM/global relevance
-            has_relevance = any(w in combined for w in [
-                'spanish', 'español', 'bilingual', 'latam', 'hispanic',
-                'chile', 'colombia', 'mexico', 'argentina', 'peru', 'spain',
-                'worldwide', 'anywhere', 'americas', 'europe', 'global',
-                'africa', 'asia', 'international', 'multinational',
-            ])
+            has_relevance = is_spanish_market_relevant(combined)
             if not has_relevance:
                 continue
             jobs.append(make_job(
@@ -473,15 +529,7 @@ def scrape_jsearch():
         log.info('JSearch: skipped (no RAPIDAPI_KEY)')
         return []
     jobs = []
-    queries = [
-        'remote spanish speaking', 'remote latam', 'remote spain',
-        'spanish required', 'bilingual spanish english',
-        'operations manager remote', 'sales manager remote',
-        'customer success remote', 'marketing manager remote',
-        'software engineer remote', 'data analyst remote',
-        'project manager remote', 'HR manager remote',
-        'finance manager remote', 'design remote',
-    ]
+    queries = SPANISH_SEARCH_QUERIES
     headers = {
         'X-RapidAPI-Key': JSEARCH_KEY,
         'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
@@ -545,12 +593,9 @@ def scrape_adzuna():
         ('co', 'Colombia'),
         ('ar', 'Argentina'),
         ('pe', 'Perú'),
+        ('br', 'Brasil'),
     ]
-    queries = [
-        'remoto', 'teletrabajo', 'gerente', 'ventas', 'operaciones',
-        'marketing', 'desarrollador', 'ingeniero', 'datos', 'diseño',
-        'administrativo', 'recursos humanos', 'contable', 'abogado',
-    ]
+    queries = SPANISH_JOB_QUERIES
     for country, name in countries:
         for q in queries:
             try:
@@ -607,8 +652,8 @@ def scrape_jooble():
         log.info('Jooble: skipped (no JOOBLE_API_KEY)')
         return []
     jobs = []
-    locations = ['Madrid', 'Barcelona', 'Mexico', 'Bogota', 'Buenos Aires', 'Santiago', 'Lima', 'Remote']
-    queries = ['remote', 'gerente', 'ventas', 'marketing', 'desarrollador', 'ingeniero']
+    locations = LATAM_SPAIN_LOCATIONS
+    queries = SPANISH_JOB_QUERIES
     for loc in locations:
         for q in queries:
             try:
@@ -668,6 +713,8 @@ def scrape_greenhouse():
                 departments = [d.get('name', '') for d in j.get('departments', []) if d.get('name')]
                 title = j.get('title', '')
                 location = _location_from_greenhouse(j) or 'Not specified'
+                if not is_spanish_market_relevant(title, board, location, j.get('content', ''), ' '.join(departments)):
+                    continue
                 url = j.get('absolute_url') or f'https://boards.greenhouse.io/{board}/jobs/{j.get("id", "")}'
                 jobs.append(make_job(
                     source='greenhouse',
@@ -703,6 +750,8 @@ def scrape_lever():
                 cats = j.get('categories') or {}
                 location = cats.get('location') or ', '.join(cats.get('allLocations') or []) or 'Not specified'
                 title = j.get('text', '')
+                if not is_spanish_market_relevant(title, site, location, j.get('descriptionPlain') or j.get('description', ''), cats.get('team', ''), cats.get('department', '')):
+                    continue
                 apply_url = j.get('hostedUrl') or j.get('applyUrl') or f'https://jobs.lever.co/{site}/{j.get("id", "")}'
                 jobs.append(make_job(
                     source='lever',
@@ -750,6 +799,8 @@ def scrape_ashby():
             for j in items:
                 title = j.get('title', '')
                 location = j.get('location') or 'Not specified'
+                if not is_spanish_market_relevant(title, board, location, j.get('descriptionHtml') or j.get('descriptionPlain') or '', j.get('department', ''), j.get('team', '')):
+                    continue
                 url = j.get('jobUrl') or j.get('applyUrl') or f'https://jobs.ashbyhq.com/{board}/{j.get("id", "")}'
                 jobs.append(make_job(
                     source='ashby',
@@ -790,6 +841,8 @@ def scrape_smartrecruiters():
                 title = j.get('name') or j.get('title') or ''
                 loc = j.get('location') or {}
                 location = loc.get('fullLocation') or loc.get('city') or loc.get('country') or 'Not specified'
+                if not is_spanish_market_relevant(title, company, location):
+                    continue
                 url = f'https://jobs.smartrecruiters.com/{company}/{j.get("id")}' if j.get('id') else j.get('ref', '')
                 jobs.append(make_job(
                     source='smartrecruiters',
@@ -833,6 +886,8 @@ def scrape_workable():
                     location = ', '.join(filter(None, [loc.get('city'), loc.get('country'), loc.get('country_name')]))
                 else:
                     location = loc or 'Not specified'
+                if not is_spanish_market_relevant(title, account, location, j.get('description') or j.get('full_description') or '', j.get('department', '')):
+                    continue
                 url = j.get('url') or j.get('application_url') or f'https://apply.workable.com/{account}/j/{j.get("shortcode", "")}'
                 jobs.append(make_job(
                     source='workable',
@@ -868,6 +923,8 @@ def scrape_recruitee():
             for j in items:
                 title = j.get('title', '')
                 location = j.get('location') or j.get('city') or 'Not specified'
+                if not is_spanish_market_relevant(title, company, location, j.get('description') or j.get('requirements') or '', j.get('department', '')):
+                    continue
                 url = j.get('careers_apply_url') or j.get('careers_url') or f'https://{company}.recruitee.com/o/{j.get("slug", j.get("id", ""))}'
                 jobs.append(make_job(
                     source='recruitee',
@@ -909,6 +966,8 @@ def scrape_teamtailor():
                 title = attrs.get('title') or ''
                 url = attrs.get('careersite-job-url') or attrs.get('apply-url') or ''
                 location = attrs.get('location') or 'Not specified'
+                if not is_spanish_market_relevant(title, company, location, attrs.get('body') or ''):
+                    continue
                 jobs.append(make_job(
                     source='teamtailor',
                     source_url=url,
@@ -947,6 +1006,8 @@ def scrape_breezy():
                 title = j.get('name') or ''
                 location = j.get('location', {}).get('name') if isinstance(j.get('location'), dict) else j.get('location', '')
                 url = j.get('friendly_url') or j.get('url') or ''
+                if not is_spanish_market_relevant(title, company_id, location, j.get('description') or '', j.get('department', ''), j.get('category', '')):
+                    continue
                 jobs.append(make_job(
                     source='breezy',
                     source_url=url,

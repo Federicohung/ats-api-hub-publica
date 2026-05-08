@@ -56,6 +56,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 /* ─── CONTENT ─── */
 .content{min-width:0}
 .filters{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.view-tabs{display:flex;gap:8px;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:12px}
+.view-tab{padding:10px 16px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:13px;font-weight:700;cursor:pointer}
+.view-tab.active{background:rgba(59,130,246,.16);border-color:rgba(59,130,246,.45);color:var(--accent)}
+.source-health{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.source-health-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.source-health-card.connected{border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.04)}
+.source-health-card.needs-key{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.04)}
+.source-health-card.offline{opacity:.72}
+.source-health-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.source-health-name{font-size:15px;font-weight:800;color:#fff}
+.source-health-type{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.source-status{font-size:11px;font-weight:800;padding:4px 8px;border-radius:999px;background:rgba(100,116,139,.18);color:var(--text2);white-space:nowrap}
+.source-status.connected{background:rgba(16,185,129,.16);color:var(--green)}
+.source-status.needs-key{background:rgba(245,158,11,.16);color:var(--yellow)}
+.source-health-count{font-size:26px;font-weight:900;color:var(--accent);line-height:1;margin:8px 0 4px}
+.source-health-desc{font-size:12px;color:var(--text3);line-height:1.45}
+.source-health-code{display:inline-block;margin-top:10px;padding:4px 7px;border-radius:5px;background:rgba(0,0,0,.22);color:var(--text2);font-size:11px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.source-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.source-summary-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
+.source-summary-card strong{display:block;font-size:26px;color:var(--accent);line-height:1}
+.source-summary-card span{display:block;margin-top:6px;color:var(--text3);font-size:12px}
 .search-box{flex:1;min-width:200px;position:relative}
 .search-box input{width:100%;padding:10px 16px 10px 40px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;outline:none;transition:border .2s}
 .search-box input:focus{border-color:var(--accent)}
@@ -220,22 +241,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <!-- CONTENT -->
   <div class="content">
-    <div class="filters">
-      <div class="search-box">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
-        <input type="text" id="searchInput" placeholder="Buscar puesto, empresa..." oninput="renderJobs()">
-      </div>
-      <select class="source-select" id="sourceFilter" onchange="renderJobs()">
-        <option value="">Todas las fuentes</option>
-      </select>
-      <select class="source-select" id="sortFilter" onchange="renderJobs()">
-        <option value="newest">Más recientes</option>
-        <option value="salary">Con salario</option>
-        <option value="company">Empresa A-Z</option>
-      </select>
+    <div class="view-tabs">
+      <button class="view-tab active" id="jobsTab" onclick="setView('jobs')">Ofertas</button>
+      <button class="view-tab" id="sourcesTab" onclick="setView('sources')">Fuentes conectadas</button>
     </div>
-    <div class="results-info" id="resultsInfo"></div>
-    <div class="jobs-grid" id="jobsGrid"></div>
+
+    <div id="jobsView">
+      <div class="filters">
+        <div class="search-box">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+          <input type="text" id="searchInput" placeholder="Buscar puesto, empresa..." oninput="renderJobs()">
+        </div>
+        <select class="source-select" id="sourceFilter" onchange="renderJobs()">
+          <option value="">Todas las fuentes</option>
+        </select>
+        <select class="source-select" id="sortFilter" onchange="renderJobs()">
+          <option value="newest">Más recientes</option>
+          <option value="salary">Con salario</option>
+          <option value="company">Empresa A-Z</option>
+        </select>
+      </div>
+      <div class="results-info" id="resultsInfo"></div>
+      <div class="jobs-grid" id="jobsGrid"></div>
+    </div>
+
+    <div id="sourcesView" style="display:none">
+      <div class="source-summary" id="sourceSummary"></div>
+      <div class="source-health" id="sourceHealth"></div>
+    </div>
   </div>
 </div>
 
@@ -260,25 +293,26 @@ const CATEGORY_LABELS = {
 };
 
 const SOURCE_INFO = {
-  remotive: { label: 'Remotive', type: 'FREE' },
-  arbeitnow: { label: 'Arbeitnow', type: 'FREE' },
-  torre: { label: 'Torre', type: 'FREE' },
-  remoteok: { label: 'RemoteOK', type: 'FREE' },
-  jsearch: { label: 'JSearch', type: 'API' },
-  adzuna: { label: 'Adzuna', type: 'API' },
-  jooble: { label: 'Jooble', type: 'API' },
-  greenhouse: { label: 'Greenhouse', type: 'ATS' },
-  lever: { label: 'Lever', type: 'ATS' },
-  ashby: { label: 'Ashby', type: 'ATS' },
-  smartrecruiters: { label: 'SmartRecruiters', type: 'ATS' },
-  workable: { label: 'Workable', type: 'ATS' },
-  recruitee: { label: 'Recruitee', type: 'ATS' },
-  teamtailor: { label: 'Teamtailor', type: 'ATS/API' },
-  breezy: { label: 'Breezy HR', type: 'ATS/API' },
+  remotive: { label: 'Remotive', type: 'FREE', status: 'no-key', description: 'Remoto global; filtrado por español, LATAM, España y worldwide.' },
+  arbeitnow: { label: 'Arbeitnow', type: 'FREE', status: 'no-key', description: 'Europa/remoto; útil cuando la oferta menciona español, remoto o mercados internacionales.' },
+  torre: { label: 'Torre', type: 'FREE', status: 'no-key', description: 'Muy útil para LATAM, remoto, español y posiciones regionales.' },
+  remoteok: { label: 'RemoteOK', type: 'FREE', status: 'no-key', description: 'Remoto global; filtrado por señales LATAM/España/español.' },
+  jsearch: { label: 'JSearch', type: 'API', status: 'api-key', env: 'RAPIDAPI_KEY', description: 'Agregador fuerte para llegar a fuentes tipo Google Jobs/LinkedIn/Indeed indirectamente.' },
+  adzuna: { label: 'Adzuna', type: 'API', status: 'api-key', env: 'ADZUNA_APP_ID + ADZUNA_APP_KEY', description: 'Consulta España, México, Chile, Colombia, Argentina, Perú y Brasil.' },
+  jooble: { label: 'Jooble', type: 'API', status: 'api-key', env: 'JOOBLE_API_KEY', description: 'Búsquedas por país/ciudad y keywords en español.' },
+  greenhouse: { label: 'Greenhouse', type: 'ATS', status: 'no-key', env: 'GREENHOUSE_BOARDS opcional', description: 'ATS público; depende de boards configurados y señales LATAM/remoto/español.' },
+  lever: { label: 'Lever', type: 'ATS', status: 'no-key', env: 'LEVER_SITES opcional', description: 'ATS público; filtra por ubicación remota/global/LATAM/español.' },
+  ashby: { label: 'Ashby', type: 'ATS', status: 'no-key', env: 'ASHBY_BOARDS opcional', description: 'ATS público moderno; útil con empresas globales que contratan remoto.' },
+  recruitee: { label: 'Recruitee', type: 'ATS', status: 'no-key', env: 'RECRUITEE_COMPANIES opcional', description: 'Careers API pública; buena para empresas europeas/globales.' },
+  smartrecruiters: { label: 'SmartRecruiters', type: 'ATS/API', status: 'api-key', env: 'SMARTRECRUITERS_API_KEY', description: 'Requiere token oficial para operar de forma estable.' },
+  workable: { label: 'Workable', type: 'ATS/API', status: 'api-key', env: 'WORKABLE_API_KEY', description: 'Requiere API key oficial; puede traer empleos directos de empresas.' },
+  teamtailor: { label: 'Teamtailor', type: 'ATS/API', status: 'api-key', env: 'TEAMTAILOR_API_KEY + TEAMTAILOR_COMPANIES', description: 'Requiere token y compañías configuradas.' },
+  breezy: { label: 'Breezy HR', type: 'ATS/API', status: 'api-key', env: 'BREEZY_API_KEY + BREEZY_COMPANIES', description: 'Requiere token y compañías configuradas.' },
 };
 
 let data = { jobs: [], sources: {}, categories: {} };
 let activeCategory = 'all';
+let activeView = 'jobs';
 
 // ─── DATA LOADING ───
 
@@ -289,8 +323,8 @@ async function loadData() {
   } catch(e) {
     console.warn('No local data, trying GitHub...')
     try {
-      const repo = window.location.pathname.includes('/job-hub-api/') ?
-        'Federicohung/job-hub-api' : null;
+      const repo = window.location.pathname.includes('/ats-api-hub-publica/') ?
+        'Federicohung/ats-api-hub-publica' : null;
       if (repo) {
         const r = await fetch(`https://raw.githubusercontent.com/${repo}/master/scraper/data/jobs.json`);
         data = await r.json();
@@ -306,8 +340,10 @@ function render() {
   renderStats();
   renderCategories();
   renderSources();
+  renderSourceHealth();
   renderSourceFilter();
   renderJobs();
+  setView(activeView);
 }
 
 function renderStats() {
@@ -371,6 +407,48 @@ function renderSourceFilter() {
     const info = SOURCE_INFO[key] || { label: key };
     sel.innerHTML += `<option value="${key}">${info.label} (${count})</option>`;
   }
+}
+
+function renderSourceHealth() {
+  const sources = data.sources || {};
+  const entries = Object.entries(SOURCE_INFO);
+  const connected = entries.filter(([key]) => (sources[key] || 0) > 0).length;
+  const needsKey = entries.filter(([, info]) => info.status === 'api-key').length;
+  const noKey = entries.filter(([, info]) => info.status === 'no-key').length;
+  const totalJobs = Object.values(sources).reduce((sum, count) => sum + Number(count || 0), 0);
+
+  document.getElementById('sourceSummary').innerHTML = `
+    <div class="source-summary-card"><strong>${connected}</strong><span>Fuentes conectadas con resultados</span></div>
+    <div class="source-summary-card"><strong>${noKey}</strong><span>Fuentes sin API key</span></div>
+    <div class="source-summary-card"><strong>${needsKey}</strong><span>Fuentes que requieren API key</span></div>
+    <div class="source-summary-card"><strong>${totalJobs}</strong><span>Ofertas antes de filtros de pantalla</span></div>
+  `;
+
+  document.getElementById('sourceHealth').innerHTML = entries.map(([key, info]) => {
+    const count = sources[key] || 0;
+    const connectedClass = count > 0 ? 'connected' : info.status === 'api-key' ? 'needs-key' : 'offline';
+    const statusLabel = count > 0 ? 'Conectada' : info.status === 'api-key' ? 'Requiere API' : 'Sin resultados';
+    return `<article class="source-health-card ${connectedClass}">
+      <div class="source-health-top">
+        <div>
+          <div class="source-health-name">${info.label}</div>
+          <div class="source-health-type">${info.type}</div>
+        </div>
+        <span class="source-status ${connectedClass}">${statusLabel}</span>
+      </div>
+      <div class="source-health-count">${count}</div>
+      <div class="source-health-desc">${info.description}</div>
+      ${info.env ? `<code class="source-health-code">${info.env}</code>` : ''}
+    </article>`;
+  }).join('');
+}
+
+function setView(view) {
+  activeView = view;
+  document.getElementById('jobsView').style.display = view === 'jobs' ? '' : 'none';
+  document.getElementById('sourcesView').style.display = view === 'sources' ? '' : 'none';
+  document.getElementById('jobsTab').classList.toggle('active', view === 'jobs');
+  document.getElementById('sourcesTab').classList.toggle('active', view === 'sources');
 }
 
 function renderJobs() {
@@ -488,7 +566,7 @@ async function dispatchWorkflow() {
   updateProgress(10, 'Despachando workflow...');
 
   try {
-    const r = await fetch('https://api.github.com/repos/Federicohung/job-hub-api/actions/workflows/scrape.yml/dispatches', {
+    const r = await fetch('https://api.github.com/repos/Federicohung/ats-api-hub-publica/actions/workflows/scrape.yml/dispatches', {
       method: 'POST',
       headers: {
         'Authorization': `token ${GITHUB_TOKEN}`,
@@ -521,7 +599,7 @@ async function pollWorkflow() {
   const poll = async () => {
     attempts++;
     try {
-      const r = await fetch('https://api.github.com/repos/Federicohung/job-hub-api/actions/runs?per_page=1', {
+      const r = await fetch('https://api.github.com/repos/Federicohung/ats-api-hub-publica/actions/runs?per_page=1', {
         headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
       });
       const data = await r.json();

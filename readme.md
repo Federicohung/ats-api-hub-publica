@@ -84,6 +84,14 @@ Variables opcionales del repo para elegir empresas/boards ATS:
 - `TEAMTAILOR_COMPANIES`
 - `BREEZY_COMPANIES`
 
+Variables opcionales para afinar relevancia en español/LATAM/España:
+
+- `SPANISH_SEARCH_QUERIES` — queries largas para agregadores como JSearch
+- `SPANISH_JOB_QUERIES` — keywords usadas en Torre, Adzuna y Jooble
+- `LATAM_SPAIN_LOCATIONS` — ubicaciones consultadas en Jooble
+
+Por defecto el scraper prioriza términos como `spanish required`, `bilingual spanish`, `español`, `remoto`, `teletrabajo`, `LATAM`, `Latin America`, `España`, `México`, `Chile`, `Colombia`, `Argentina`, `Perú`, `Uruguay`, `Madrid`, `Barcelona`, `Santiago`, `Bogotá`, `Buenos Aires` y `Lima`.
+
 ### 4. Activar workflow
 
 Actions → Enable workflows → Run workflow
