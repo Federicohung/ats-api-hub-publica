@@ -1,0 +1,9 @@
+{
+  "name": "job-hub-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-static.cjs",
+    "preview": "node scripts/preview-server.cjs"
+  }
+}

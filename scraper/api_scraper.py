@@ -11,7 +11,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger('job-hub-api')
 
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_ROOT_DIR = os.path.dirname(_SCRIPT_DIR)
 DATA_FILE = os.path.join(_SCRIPT_DIR, 'data', 'jobs.json')
+DOCS_DATA_FILE = os.path.join(_ROOT_DIR, 'docs', 'jobs.json')
 SYNC_LOG = os.path.join(_SCRIPT_DIR, 'data', 'sync_log.json')
 HISTORY_FILE = os.path.join(_SCRIPT_DIR, 'data', 'sync_history.json')
 
@@ -23,6 +25,39 @@ JSEARCH_KEY = os.environ.get('RAPIDAPI_KEY', '')
 ADZUNA_ID = os.environ.get('ADZUNA_APP_ID', '')
 ADZUNA_KEY = os.environ.get('ADZUNA_APP_KEY', '')
 JOOBLE_KEY = os.environ.get('JOOBLE_API_KEY', '')
+SMARTRECRUITERS_KEY = os.environ.get('SMARTRECRUITERS_API_KEY', '')
+WORKABLE_KEY = os.environ.get('WORKABLE_API_KEY', '')
+TEAMTAILOR_KEY = os.environ.get('TEAMTAILOR_API_KEY', '')
+BREEZY_KEY = os.environ.get('BREEZY_API_KEY', '')
+
+
+def env_list(name, fallback):
+    raw = os.environ.get(name, '')
+    values = [v.strip() for v in raw.split(',') if v.strip()]
+    return values or fallback
+
+
+# Public ATS/careers-board targets. Add/override via comma-separated env vars.
+GREENHOUSE_BOARDS = env_list('GREENHOUSE_BOARDS', [
+    'airbnb', 'stripe', 'datadog', 'cloudflare', 'figma', 'notion', 'gitlab'
+])
+LEVER_SITES = env_list('LEVER_SITES', [
+    'netflix', 'spotify', 'scaleai', 'benchling', 'postman', 'anduril'
+])
+ASHBY_BOARDS = env_list('ASHBY_BOARDS', [
+    'openai', 'anthropic', 'perplexity', 'cursor', 'ashby', 'ramp'
+])
+SMARTRECRUITERS_COMPANIES = env_list('SMARTRECRUITERS_COMPANIES', [
+    'Visa', 'BoschGroup', 'Square', 'NielsenIQ', 'Wolt', 'Avaloq'
+])
+WORKABLE_ACCOUNTS = env_list('WORKABLE_ACCOUNTS', [
+    'workable', 'bending-spoons', 'canonical', 'superside', 'hostinger'
+])
+RECRUITEE_COMPANIES = env_list('RECRUITEE_COMPANIES', [
+    'recruitee', 'mollie', 'weaviate', 'typeform', 'hotjar'
+])
+TEAMTAILOR_COMPANIES = env_list('TEAMTAILOR_COMPANIES', [])
+BREEZY_COMPANIES = env_list('BREEZY_COMPANIES', [])
 
 # ─── Auto-categorization ───
 CATEGORY_KEYWORDS = {
@@ -454,7 +489,7 @@ def scrape_jsearch():
     for q in queries:
         try:
             status, data = http_get(
-                'https://jsearch.p.rapidapi.com/search',
+                f'https://jsearch.p.rapidapi.com/search?query={q.replace(" ", "%20")}&page=1&num_pages=1',
                 headers=headers,
                 timeout=20,
             )
@@ -610,11 +645,362 @@ def scrape_jooble():
 # DEDUPLICATION & PIPELINE
 # ═══════════════════════════════════════════════════════════════
 
+def _location_from_greenhouse(job):
+    offices = job.get('offices') or []
+    if offices:
+        locations = [o.get('location') or o.get('name') for o in offices if o.get('location') or o.get('name')]
+        if locations:
+            return ', '.join(dict.fromkeys(locations))
+    return job.get('location', {}).get('name', '') if isinstance(job.get('location'), dict) else ''
+
+
+def scrape_greenhouse():
+    """Greenhouse Job Board API. Public GET endpoints, no API key required."""
+    jobs = []
+    for board in GREENHOUSE_BOARDS:
+        try:
+            status, data = http_get(f'https://boards-api.greenhouse.io/v1/boards/{board}/jobs?content=true', timeout=20)
+            if status != 200:
+                log.warning(f'Greenhouse {board}: HTTP {status}')
+                continue
+            items = data.get('jobs', [])
+            for j in items:
+                departments = [d.get('name', '') for d in j.get('departments', []) if d.get('name')]
+                title = j.get('title', '')
+                location = _location_from_greenhouse(j) or 'Not specified'
+                url = j.get('absolute_url') or f'https://boards.greenhouse.io/{board}/jobs/{j.get("id", "")}'
+                jobs.append(make_job(
+                    source='greenhouse',
+                    source_url=url,
+                    title=title,
+                    company=board,
+                    location=location,
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type='FULL_TIME',
+                    salary='No publicado',
+                    description=j.get('content', ''),
+                    posted_at=j.get('updated_at', ''),
+                    apply_url=url,
+                    tags=departments,
+                ))
+            log.info(f'Greenhouse {board}: {len(items)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Greenhouse {board}: {e}')
+    return jobs
+
+
+def scrape_lever():
+    """Lever Postings API. Public postings endpoint, no API key required for reads."""
+    jobs = []
+    for site in LEVER_SITES:
+        try:
+            status, data = http_get(f'https://api.lever.co/v0/postings/{site}?mode=json', timeout=20)
+            if status != 200 or not isinstance(data, list):
+                log.warning(f'Lever {site}: HTTP {status}')
+                continue
+            for j in data:
+                cats = j.get('categories') or {}
+                location = cats.get('location') or ', '.join(cats.get('allLocations') or []) or 'Not specified'
+                title = j.get('text', '')
+                apply_url = j.get('hostedUrl') or j.get('applyUrl') or f'https://jobs.lever.co/{site}/{j.get("id", "")}'
+                jobs.append(make_job(
+                    source='lever',
+                    source_url=apply_url,
+                    title=title,
+                    company=site,
+                    location=location,
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type=(cats.get('commitment') or 'FULL_TIME').upper().replace(' ', '_'),
+                    salary='No publicado',
+                    description=j.get('descriptionPlain') or j.get('description', ''),
+                    posted_at=j.get('createdAt', ''),
+                    apply_url=apply_url,
+                    tags=[cats.get('team', ''), cats.get('department', '')],
+                ))
+            log.info(f'Lever {site}: {len(data)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Lever {site}: {e}')
+    return jobs
+
+
+def _ashby_salary(job):
+    comp = job.get('compensation') or {}
+    if not isinstance(comp, dict):
+        return 'No publicado'
+    parts = []
+    if comp.get('compensationTierSummary'):
+        parts.append(comp.get('compensationTierSummary'))
+    if comp.get('summaryComponents'):
+        parts.extend(str(v) for v in comp.get('summaryComponents') if v)
+    return ' · '.join(parts) if parts else 'No publicado'
+
+
+def scrape_ashby():
+    """Ashby public Job Postings API."""
+    jobs = []
+    for board in ASHBY_BOARDS:
+        try:
+            status, data = http_get(f'https://api.ashbyhq.com/posting-api/job-board/{board}?includeCompensation=true', timeout=20)
+            if status != 200:
+                log.warning(f'Ashby {board}: HTTP {status}')
+                continue
+            items = data.get('jobs', [])
+            for j in items:
+                title = j.get('title', '')
+                location = j.get('location') or 'Not specified'
+                url = j.get('jobUrl') or j.get('applyUrl') or f'https://jobs.ashbyhq.com/{board}/{j.get("id", "")}'
+                jobs.append(make_job(
+                    source='ashby',
+                    source_url=url,
+                    title=title,
+                    company=board,
+                    location=location,
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type='FULL_TIME',
+                    salary=_ashby_salary(j),
+                    description=j.get('descriptionHtml') or j.get('descriptionPlain') or '',
+                    posted_at=j.get('publishedDate') or j.get('updatedAt') or '',
+                    apply_url=url,
+                    tags=[j.get('department', ''), j.get('team', '')],
+                ))
+            log.info(f'Ashby {board}: {len(items)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Ashby {board}: {e}')
+    return jobs
+
+
+def scrape_smartrecruiters():
+    """SmartRecruiters Posting API. Requires SMARTRECRUITERS_API_KEY."""
+    if not SMARTRECRUITERS_KEY:
+        log.info('SmartRecruiters: skipped (requires SMARTRECRUITERS_API_KEY)')
+        return []
+    jobs = []
+    headers = {'X-SmartToken': SMARTRECRUITERS_KEY}
+    for company in SMARTRECRUITERS_COMPANIES:
+        try:
+            status, data = http_get(f'https://api.smartrecruiters.com/v1/companies/{company}/postings?limit=100', headers=headers, timeout=20)
+            if status != 200:
+                log.warning(f'SmartRecruiters {company}: HTTP {status}')
+                continue
+            items = data.get('content') or data.get('jobs') or []
+            for j in items:
+                title = j.get('name') or j.get('title') or ''
+                loc = j.get('location') or {}
+                location = loc.get('fullLocation') or loc.get('city') or loc.get('country') or 'Not specified'
+                url = f'https://jobs.smartrecruiters.com/{company}/{j.get("id")}' if j.get('id') else j.get('ref', '')
+                jobs.append(make_job(
+                    source='smartrecruiters',
+                    source_url=url,
+                    title=title,
+                    company=company,
+                    location=location,
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type=(j.get('typeOfEmployment', {}).get('label') if isinstance(j.get('typeOfEmployment'), dict) else 'FULL_TIME'),
+                    salary='No publicado',
+                    description='',
+                    posted_at=j.get('releasedDate', ''),
+                    apply_url=url,
+                    tags=[j.get('department', {}).get('label', '')] if isinstance(j.get('department'), dict) else [],
+                ))
+            log.info(f'SmartRecruiters {company}: {len(items)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'SmartRecruiters {company}: {e}')
+    return jobs
+
+
+def scrape_workable():
+    """Workable SPI jobs endpoint. Requires WORKABLE_API_KEY."""
+    if not WORKABLE_KEY:
+        log.info('Workable: skipped (requires WORKABLE_API_KEY)')
+        return []
+    jobs = []
+    headers = {'Authorization': f'Bearer {WORKABLE_KEY}'}
+    for account in WORKABLE_ACCOUNTS:
+        try:
+            status, data = http_get(f'https://{account}.workable.com/spi/v3/jobs?state=published', headers=headers, timeout=20)
+            if status != 200:
+                log.warning(f'Workable {account}: HTTP {status}')
+                continue
+            items = data.get('jobs') or []
+            for j in items:
+                title = j.get('title', '')
+                loc = j.get('location') or {}
+                if isinstance(loc, dict):
+                    location = ', '.join(filter(None, [loc.get('city'), loc.get('country'), loc.get('country_name')]))
+                else:
+                    location = loc or 'Not specified'
+                url = j.get('url') or j.get('application_url') or f'https://apply.workable.com/{account}/j/{j.get("shortcode", "")}'
+                jobs.append(make_job(
+                    source='workable',
+                    source_url=url,
+                    title=title,
+                    company=account,
+                    location=location,
+                    remote='remote' in f'{title} {location} {j.get("workplace", "")}'.lower(),
+                    job_type=(j.get('employment_type') or j.get('type') or 'FULL_TIME').upper(),
+                    salary=j.get('salary') or 'No publicado',
+                    description=j.get('description') or j.get('full_description') or '',
+                    posted_at=j.get('created_at') or j.get('published') or j.get('published_on') or '',
+                    apply_url=url,
+                    tags=[j.get('department', '')],
+                ))
+            log.info(f'Workable {account}: {len(items)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Workable {account}: {e}')
+    return jobs
+
+
+def scrape_recruitee():
+    """Recruitee Careers Site API. Public careers offers endpoint."""
+    jobs = []
+    for company in RECRUITEE_COMPANIES:
+        try:
+            status, data = http_get(f'https://{company}.recruitee.com/api/offers', timeout=20)
+            if status != 200:
+                log.warning(f'Recruitee {company}: HTTP {status}')
+                continue
+            items = data.get('offers') or []
+            for j in items:
+                title = j.get('title', '')
+                location = j.get('location') or j.get('city') or 'Not specified'
+                url = j.get('careers_apply_url') or j.get('careers_url') or f'https://{company}.recruitee.com/o/{j.get("slug", j.get("id", ""))}'
+                jobs.append(make_job(
+                    source='recruitee',
+                    source_url=url,
+                    title=title,
+                    company=company,
+                    location=location,
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type=(j.get('employment_type') or 'FULL_TIME').upper(),
+                    salary='No publicado',
+                    description=j.get('description') or j.get('requirements') or '',
+                    posted_at=j.get('published_at') or j.get('created_at') or '',
+                    apply_url=url,
+                    tags=[j.get('department', '')],
+                ))
+            log.info(f'Recruitee {company}: {len(items)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Recruitee {company}: {e}')
+    return jobs
+
+
+def scrape_teamtailor():
+    """Teamtailor official API requires TEAMTAILOR_API_KEY and TEAMTAILOR_COMPANIES."""
+    if not TEAMTAILOR_KEY or not TEAMTAILOR_COMPANIES:
+        log.info('Teamtailor: skipped (requires TEAMTAILOR_API_KEY and TEAMTAILOR_COMPANIES)')
+        return []
+    jobs = []
+    headers = {'Authorization': f'Token token={TEAMTAILOR_KEY}', 'X-Api-Version': '20240404'}
+    for company in TEAMTAILOR_COMPANIES:
+        try:
+            status, data = http_get(f'https://api.teamtailor.com/v1/jobs?filter%5Bcompany%5D={company}', headers=headers, timeout=20)
+            if status != 200:
+                log.warning(f'Teamtailor {company}: HTTP {status}')
+                continue
+            items = data.get('data') or []
+            for j in items:
+                attrs = j.get('attributes') or {}
+                title = attrs.get('title') or ''
+                url = attrs.get('careersite-job-url') or attrs.get('apply-url') or ''
+                location = attrs.get('location') or 'Not specified'
+                jobs.append(make_job(
+                    source='teamtailor',
+                    source_url=url,
+                    title=title,
+                    company=company,
+                    location=location,
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type=(attrs.get('employment-type') or 'FULL_TIME').upper(),
+                    salary='No publicado',
+                    description=attrs.get('body') or '',
+                    posted_at=attrs.get('published-at') or attrs.get('created-at') or '',
+                    apply_url=url,
+                    tags=[],
+                ))
+            log.info(f'Teamtailor {company}: {len(items)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Teamtailor {company}: {e}')
+    return jobs
+
+
+def scrape_breezy():
+    """Breezy official API requires BREEZY_API_KEY and BREEZY_COMPANIES IDs."""
+    if not BREEZY_KEY or not BREEZY_COMPANIES:
+        log.info('Breezy: skipped (requires BREEZY_API_KEY and BREEZY_COMPANIES)')
+        return []
+    jobs = []
+    headers = {'Authorization': BREEZY_KEY}
+    for company_id in BREEZY_COMPANIES:
+        try:
+            status, data = http_get(f'https://api.breezy.hr/v3/company/{company_id}/positions?state=published', headers=headers, timeout=20)
+            if status != 200 or not isinstance(data, list):
+                log.warning(f'Breezy {company_id}: HTTP {status}')
+                continue
+            for j in data:
+                title = j.get('name') or ''
+                location = j.get('location', {}).get('name') if isinstance(j.get('location'), dict) else j.get('location', '')
+                url = j.get('friendly_url') or j.get('url') or ''
+                jobs.append(make_job(
+                    source='breezy',
+                    source_url=url,
+                    title=title,
+                    company=company_id,
+                    location=location or 'Not specified',
+                    remote='remote' in f'{title} {location}'.lower(),
+                    job_type=(j.get('type') or 'FULL_TIME').upper(),
+                    salary='No publicado',
+                    description=j.get('description') or '',
+                    posted_at=j.get('creation_date') or j.get('updated_date') or '',
+                    apply_url=url,
+                    tags=[j.get('department', ''), j.get('category', '')],
+                ))
+            log.info(f'Breezy {company_id}: {len(data)} jobs')
+            time.sleep(1)
+        except Exception as e:
+            log.error(f'Breezy {company_id}: {e}')
+    return jobs
+
+
 def deduplicate(jobs):
+    source_priority = {
+        'greenhouse': 100,
+        'lever': 100,
+        'ashby': 100,
+        'smartrecruiters': 95,
+        'workable': 95,
+        'recruitee': 95,
+        'teamtailor': 90,
+        'breezy': 90,
+        'jsearch': 70,
+        'adzuna': 65,
+        'jooble': 65,
+        'remotive': 60,
+        'remoteok': 60,
+        'arbeitnow': 55,
+        'torre': 55,
+    }
+
+    def quality(job):
+        score = source_priority.get(job.get('source'), 10)
+        if job.get('applyUrl') and job.get('applyUrl') != job.get('sourceUrl'):
+            score += 20
+        if job.get('description'):
+            score += 5
+        if job.get('salary') and job.get('salary') != 'No publicado':
+            score += 5
+        return score
+
     seen = {}
     for job in jobs:
         key = re.sub(r'[\s\-,\.]+', ' ', f"{job['company'].lower()}:{job['title'].lower()}").strip()
-        if key not in seen or job.get('applyUrl'):
+        if key not in seen or quality(job) > quality(seen[key]):
             seen[key] = job
     return list(seen.values())
 
@@ -656,6 +1042,27 @@ def run_pipeline():
         except Exception as e:
             log.error(f'[API] {name} FAILED: {e}')
 
+    # ATS / careers board sources
+    ats_sources = [
+        ('Greenhouse', scrape_greenhouse),
+        ('Lever', scrape_lever),
+        ('Ashby', scrape_ashby),
+        ('SmartRecruiters', scrape_smartrecruiters),
+        ('Workable', scrape_workable),
+        ('Recruitee', scrape_recruitee),
+        ('Teamtailor', scrape_teamtailor),
+        ('Breezy', scrape_breezy),
+    ]
+
+    for name, fn in ats_sources:
+        log.info(f'[ATS] {name}...')
+        try:
+            results = fn()
+            all_jobs.extend(results)
+            log.info(f'[ATS] {name}: {len(results)} jobs')
+        except Exception as e:
+            log.error(f'[ATS] {name} FAILED: {e}')
+
     # Dedup
     before = len(all_jobs)
     all_jobs = deduplicate(all_jobs)
@@ -687,6 +1094,9 @@ def run_pipeline():
 
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+    os.makedirs(os.path.dirname(DOCS_DATA_FILE), exist_ok=True)
+    with open(DOCS_DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     log.info(f'=== DONE: {len(all_jobs)} jobs from {len(source_counts)} sources ===')

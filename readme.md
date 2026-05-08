@@ -19,6 +19,18 @@ Dashboard de empleos vía APIs confiables (gratuitas + freemium).
 | Adzuna | 1000 req/mes | [developer.adzuna.com](https://developer.adzuna.com/) |
 | Jooble | Generoso | [jooble.org/api](https://jooble.org/api/about) |
 
+### 🧩 ATS / Careers boards
+| Fuente | Tipo | Configuración |
+|---|---|---|
+| Greenhouse | Public job board API | `GREENHOUSE_BOARDS` opcional |
+| Lever | Public postings API | `LEVER_SITES` opcional |
+| Ashby | Public postings API | `ASHBY_BOARDS` opcional |
+| SmartRecruiters | Posting API oficial | `SMARTRECRUITERS_API_KEY` + `SMARTRECRUITERS_COMPANIES` |
+| Workable | SPI jobs API oficial | `WORKABLE_API_KEY` + `WORKABLE_ACCOUNTS` |
+| Recruitee | Careers endpoint público | `RECRUITEE_COMPANIES` opcional |
+| Teamtailor | API oficial | `TEAMTAILOR_API_KEY` + `TEAMTAILOR_COMPANIES` |
+| Breezy HR | API oficial | `BREEZY_API_KEY` + `BREEZY_COMPANIES` |
+
 ## Setup
 
 ### 1. Crear repo y hacer deploy
@@ -37,6 +49,17 @@ git push -u origin master
 
 Settings → Pages → Source: `docs/` folder
 
+### 2b. Deploy en Vercel
+
+Conecta el repo `Federicohung/job-hub-api` en Vercel.
+
+Vercel queda configurado por `vercel.json`:
+
+- Build command: `npm run build`
+- Output directory: `docs`
+
+GitHub Actions sigue actualizando `docs/jobs.json`; cada commit nuevo dispara un redeploy automático en Vercel.
+
 ### 3. Configurar GitHub Secrets (opcional, para APIs freemium)
 
 Settings → Secrets and variables → Actions → New repository secret:
@@ -45,6 +68,21 @@ Settings → Secrets and variables → Actions → New repository secret:
 - `ADZUNA_APP_ID` — Adzuna App ID
 - `ADZUNA_APP_KEY` — Adzuna App Key
 - `JOOBLE_API_KEY` — Jooble API key
+- `SMARTRECRUITERS_API_KEY` — opcional para SmartRecruiters
+- `WORKABLE_API_KEY` — opcional para Workable
+- `TEAMTAILOR_API_KEY` — opcional para Teamtailor
+- `BREEZY_API_KEY` — opcional para Breezy HR
+
+Variables opcionales del repo para elegir empresas/boards ATS:
+
+- `GREENHOUSE_BOARDS`
+- `LEVER_SITES`
+- `ASHBY_BOARDS`
+- `SMARTRECRUITERS_COMPANIES`
+- `WORKABLE_ACCOUNTS`
+- `RECRUITEE_COMPANIES`
+- `TEAMTAILOR_COMPANIES`
+- `BREEZY_COMPANIES`
 
 ### 4. Activar workflow
 
