@@ -82,6 +82,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .search-box input:focus{border-color:var(--accent)}
 .search-box svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)}
 .source-select{padding:10px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;outline:none;cursor:pointer}
+.quick-filters{display:flex;gap:8px;flex-wrap:wrap;margin:-8px 0 18px}
+.quick-filter{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:12px;font-weight:800;cursor:pointer;transition:all .18s}
+.quick-filter:hover{border-color:rgba(59,130,246,.45);color:var(--text)}
+.quick-filter.active{background:rgba(59,130,246,.16);border-color:rgba(59,130,246,.55);color:var(--accent)}
 .results-info{font-size:13px;color:var(--text3);margin-bottom:12px}
 
 /* ─── JOB CARDS ─── */
@@ -255,11 +259,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <select class="source-select" id="sourceFilter" onchange="renderJobs()">
           <option value="">Todas las fuentes</option>
         </select>
+        <select class="source-select" id="regionFilter" onchange="renderJobs()">
+          <option value="">Todas las regiones</option>
+          <option value="latam">LATAM</option>
+          <option value="spain">España</option>
+          <option value="remote">Remoto global</option>
+          <option value="spanish">Español requerido</option>
+        </select>
         <select class="source-select" id="sortFilter" onchange="renderJobs()">
           <option value="newest">Más recientes</option>
           <option value="salary">Con salario</option>
           <option value="company">Empresa A-Z</option>
         </select>
+      </div>
+      <div class="quick-filters">
+        <button class="quick-filter" data-quick="latam" onclick="toggleQuickFilter('latam')">LATAM</button>
+        <button class="quick-filter" data-quick="spain" onclick="toggleQuickFilter('spain')">España</button>
+        <button class="quick-filter" data-quick="remote" onclick="toggleQuickFilter('remote')">Remoto</button>
+        <button class="quick-filter" data-quick="spanish" onclick="toggleQuickFilter('spanish')">Español</button>
       </div>
       <div class="results-info" id="resultsInfo"></div>
       <div class="jobs-grid" id="jobsGrid"></div>
@@ -313,6 +330,13 @@ const SOURCE_INFO = {
 let data = { jobs: [], sources: {}, categories: {} };
 let activeCategory = 'all';
 let activeView = 'jobs';
+let activeQuickFilters = new Set();
+
+const REGION_MATCHERS = {
+  latam: ['latam', 'latin america', 'latinoamerica', 'latinoamérica', 'mexico', 'méxico', 'chile', 'colombia', 'argentina', 'peru', 'perú', 'uruguay', 'ecuador', 'bolivia', 'paraguay', 'costa rica', 'panama', 'panamá', 'guatemala', 'santiago', 'bogota', 'bogotá', 'buenos aires', 'lima', 'montevideo'],
+  spain: ['spain', 'españa', 'madrid', 'barcelona', 'valencia', 'sevilla'],
+  spanish: ['spanish', 'español', 'espanol', 'bilingual spanish', 'spanish required', 'spanish speaking', 'castellano'],
+};
 
 // ─── DATA LOADING ───
 
@@ -454,11 +478,16 @@ function setView(view) {
 function renderJobs() {
   const search = document.getElementById('searchInput').value.toLowerCase();
   const sourceFilter = document.getElementById('sourceFilter').value;
+  const regionFilter = document.getElementById('regionFilter').value;
   const sortFilter = document.getElementById('sortFilter').value;
 
   let jobs = (data.jobs || []).filter(j => {
     if (activeCategory !== 'all' && !(j.categories || []).includes(activeCategory)) return false;
     if (sourceFilter && j.source !== sourceFilter) return false;
+    if (regionFilter && !matchesMarketFilter(j, regionFilter)) return false;
+    for (const quick of activeQuickFilters) {
+      if (!matchesMarketFilter(j, quick)) return false;
+    }
     if (search) {
       const text = `${j.title} ${j.company} ${j.description} ${j.tags?.join(' ')}`.toLowerCase();
       if (!text.includes(search)) return false;
@@ -469,7 +498,11 @@ function renderJobs() {
   if (sortFilter === 'salary') jobs.sort((a,b) => (b.salary !== 'No publicado' ? 1 : 0) - (a.salary !== 'No publicado' ? 1 : 0));
   else if (sortFilter === 'company') jobs.sort((a,b) => a.company.localeCompare(b.company));
 
-  document.getElementById('resultsInfo').textContent = `${jobs.length} vacantes encontradas`;
+  const filterLabels = [
+    regionFilter ? document.querySelector(`#regionFilter option[value="${regionFilter}"]`)?.textContent : '',
+    ...Array.from(activeQuickFilters).map(labelQuickFilter),
+  ].filter(Boolean);
+  document.getElementById('resultsInfo').textContent = `${jobs.length} vacantes encontradas${filterLabels.length ? ' · ' + filterLabels.join(' + ') : ''}`;
 
   if (jobs.length === 0) {
     document.getElementById('jobsGrid').innerHTML = `
@@ -514,6 +547,34 @@ function renderJobs() {
       </div>
     </div>`;
   }).join('');
+}
+
+function labelQuickFilter(value) {
+  return ({ latam: 'LATAM', spain: 'España', remote: 'Remoto', spanish: 'Español' })[value] || value;
+}
+
+function toggleQuickFilter(value) {
+  if (activeQuickFilters.has(value)) activeQuickFilters.delete(value);
+  else activeQuickFilters.add(value);
+  document.querySelectorAll('.quick-filter').forEach(btn => {
+    btn.classList.toggle('active', activeQuickFilters.has(btn.dataset.quick));
+  });
+  renderJobs();
+}
+
+function matchesMarketFilter(job, filter) {
+  if (filter === 'remote') return !!job.remote || textForJob(job).includes('remote') || textForJob(job).includes('remoto') || textForJob(job).includes('teletrabajo');
+  if (filter === 'spanish' && job.market?.spanishLatamSpain) {
+    const matches = (job.market.matches || []).join(' ').toLowerCase();
+    if (REGION_MATCHERS.spanish.some(term => matches.includes(term))) return true;
+  }
+  const terms = REGION_MATCHERS[filter] || [];
+  const text = textForJob(job);
+  return terms.some(term => text.includes(term));
+}
+
+function textForJob(job) {
+  return `${job.title || ''} ${job.company || ''} ${job.location || ''} ${job.description || ''} ${(job.tags || []).join(' ')} ${(job.market?.matches || []).join(' ')}`.toLowerCase();
 }
 
 function setCategory(cat) {
