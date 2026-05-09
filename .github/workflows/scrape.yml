@@ -35,15 +35,26 @@ jobs:
           path = Path('scraper/api_scraper.py')
           text = path.read_text(encoding='utf-8')
 
-          if 'from urllib.parse import quote' not in text:
-              text = text.replace(
-                  'from urllib.error import URLError, HTTPError\n',
-                  'from urllib.error import URLError, HTTPError\nfrom urllib.parse import quote\n',
-              )
+          if 'from urllib.parse import quote, urlencode' not in text:
+              if 'from urllib.parse import quote\n' in text:
+                  text = text.replace('from urllib.parse import quote\n', 'from urllib.parse import quote, urlencode\n')
+              else:
+                  text = text.replace(
+                      'from urllib.error import URLError, HTTPError\n',
+                      'from urllib.error import URLError, HTTPError\nfrom urllib.parse import quote, urlencode\n',
+                  )
 
           text = text.replace(
               "JSEARCH_KEY = os.environ.get('RAPIDAPI_KEY', '')",
               "JSEARCH_KEY = os.environ.get('JSEARCH_RAPIDAPI_KEY', '')",
+          )
+          text = text.replace(
+              "JSearch: skipped (no RAPIDAPI_KEY)",
+              "JSearch: skipped (no JSEARCH_RAPIDAPI_KEY)",
+          )
+          text = text.replace(
+              "f'https://jsearch.p.rapidapi.com/search?query={q.replace(\" \", \"%20\")}&page=1&num_pages=1',",
+              "'https://jsearch.p.rapidapi.com/search?' + urlencode({'query': q, 'page': '1', 'num_pages': '1'}),",
           )
 
           helper = (
