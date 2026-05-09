@@ -112,6 +112,10 @@ jobs:
           RSS_JOB_COUNTRY_CODES: ${{ vars.RSS_JOB_COUNTRY_CODES }}
           RSS_JOB_HAS_SALARY: ${{ vars.RSS_JOB_HAS_SALARY }}
           RSS_JOB_MAX_REQUESTS: ${{ vars.RSS_JOB_MAX_REQUESTS }}
+          JOBS_API14_RAPIDAPI_KEY: ${{ secrets.JOBS_API14_RAPIDAPI_KEY }}
+          JOBS_API14_QUERIES: ${{ vars.JOBS_API14_QUERIES }}
+          JOBS_API14_LOCATIONS: ${{ vars.JOBS_API14_LOCATIONS }}
+          JOBS_API14_MAX_REQUESTS: ${{ vars.JOBS_API14_MAX_REQUESTS }}
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
@@ -135,6 +139,7 @@ jobs:
           python scraper/linkedin_rapidapi_scraper.py
           python scraper/indeed12_rapidapi_scraper.py
           python scraper/rss_rapidapi_scraper.py
+          python scraper/jobs_api14_scraper.py
 
       - name: Keep only Spanish LATAM Spain and Caribbean jobs
         run: |
