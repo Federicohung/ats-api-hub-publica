@@ -40,7 +40,7 @@ LOCATIONS = env_list('LINKEDIN_SEARCH_LOCATIONS', [
 
 def linkedin_providers():
     providers = []
-    key = os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+    key = os.environ.get('LINKEDIN_RAPIDAPI_KEY')
     host = (os.environ.get('LINKEDIN_RAPIDAPI_HOST') or 'linkedin-job-search-api.p.rapidapi.com').strip()
     path = (os.environ.get('LINKEDIN_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
     if key and host and path:
@@ -52,7 +52,7 @@ def linkedin_providers():
             'max_requests': int(os.environ.get('LINKEDIN_RAPIDAPI_MAX_REQUESTS') or '4'),
         })
 
-    key2 = os.environ.get('LINKEDIN_API2_RAPIDAPI_KEY') or os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+    key2 = os.environ.get('LINKEDIN_API2_RAPIDAPI_KEY')
     host2 = (os.environ.get('LINKEDIN_API2_RAPIDAPI_HOST') or 'linkedin-jobs-api2.p.rapidapi.com').strip()
     path2 = (os.environ.get('LINKEDIN_API2_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
     if key2 and host2 and path2:
@@ -184,7 +184,7 @@ def scrape_provider(provider):
 def scrape_linkedin_rapidapi():
     providers = linkedin_providers()
     if not providers:
-        print('LinkedIn RapidAPI: skipped (requires LINKEDIN_RAPIDAPI_KEY, LINKEDIN_API2_RAPIDAPI_KEY or RAPIDAPI_KEY)')
+        print('LinkedIn RapidAPI: skipped (requires LINKEDIN_RAPIDAPI_KEY and/or LINKEDIN_API2_RAPIDAPI_KEY)')
         return []
 
     jobs = []
