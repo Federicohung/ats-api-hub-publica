@@ -41,6 +41,11 @@ jobs:
                   'from urllib.error import URLError, HTTPError\nfrom urllib.parse import quote\n',
               )
 
+          text = text.replace(
+              "JSEARCH_KEY = os.environ.get('RAPIDAPI_KEY', '')",
+              "JSEARCH_KEY = os.environ.get('JSEARCH_RAPIDAPI_KEY', '')",
+          )
+
           helper = (
               "\n"
               "def posted_at_sort_value(value):\n"
@@ -80,7 +85,7 @@ jobs:
 
       - name: Scrape job APIs and ATS providers
         env:
-          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          JSEARCH_RAPIDAPI_KEY: ${{ secrets.JSEARCH_RAPIDAPI_KEY }}
           LINKEDIN_RAPIDAPI_KEY: ${{ secrets.LINKEDIN_RAPIDAPI_KEY }}
           LINKEDIN_RAPIDAPI_HOST: ${{ vars.LINKEDIN_RAPIDAPI_HOST }}
           LINKEDIN_RAPIDAPI_PATH: ${{ vars.LINKEDIN_RAPIDAPI_PATH }}
