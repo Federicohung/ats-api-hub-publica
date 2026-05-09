@@ -112,17 +112,20 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          import os
           import re
           import unicodedata
           from datetime import datetime, timezone
 
           FILES = ['docs/jobs.json', 'scraper/data/jobs.json']
-          TERMS = [
+          LANGUAGE_TERMS = [
               'spanish', 'spanish speaking', 'spanish required', 'spanish speaker',
-              'bilingual spanish', 'espanol', 'español', 'castellano', 'idioma español',
+              'bilingual spanish', 'espanol', 'español', 'castellano', 'idioma español'
+          ]
+          REGION_STRONG_TERMS = [
               'latam', 'latin america', 'latinoamerica', 'latinoamérica', 'america latina',
-              'américa latina', 'hispanoamerica', 'hispanoamérica', 'caribbean', 'caribe',
+              'américa latina', 'hispanoamerica', 'hispanoamérica', 'caribbean', 'caribe'
+          ]
+          REGION_FIELD_TERMS = [
               'spain', 'españa', 'madrid', 'barcelona', 'valencia', 'sevilla',
               'mexico', 'méxico', 'cdmx', 'ciudad de mexico', 'ciudad de méxico',
               'chile', 'santiago', 'colombia', 'bogota', 'bogotá', 'medellin', 'medellín',
@@ -139,20 +142,33 @@ jobs:
               text = ''.join(ch for ch in text if not unicodedata.combining(ch))
               return re.sub(r'[^a-z0-9]+', ' ', text).strip()
 
-          TERMS = [norm(t) for t in TERMS]
-          PATTERNS = [re.compile(r'(?<![a-z0-9])' + re.escape(t) + r'(?![a-z0-9])') for t in TERMS]
+          def patterns(terms):
+              return [re.compile(r'(?<![a-z0-9])' + re.escape(norm(t)) + r'(?![a-z0-9])') for t in terms]
 
-          def text(job):
-              market = job.get('market') or {}
-              return norm(' '.join([
+          language_patterns = patterns(LANGUAGE_TERMS)
+          strong_region_patterns = patterns(REGION_STRONG_TERMS)
+          field_region_patterns = patterns(REGION_FIELD_TERMS)
+
+          def job_text(job, include_description=True):
+              parts = [
                   job.get('title', ''), job.get('company', ''), job.get('location', ''),
-                  job.get('description', ''), ' '.join(job.get('tags') or []),
-                  ' '.join(market.get('matches') or []),
-              ]))
+                  ' '.join(job.get('tags') or []),
+              ]
+              if include_description:
+                  parts.append(job.get('description', ''))
+              return norm(' '.join(parts))
+
+          def any_match(patterns, haystack):
+              return any(pattern.search(haystack) for pattern in patterns)
 
           def relevant(job):
-              haystack = text(job)
-              return any(p.search(haystack) for p in PATTERNS)
+              full = job_text(job, include_description=True)
+              fields = job_text(job, include_description=False)
+              return (
+                  any_match(language_patterns, full)
+                  or any_match(strong_region_patterns, full)
+                  or any_match(field_region_patterns, fields)
+              )
 
           for path in FILES:
               with open(path, 'r', encoding='utf-8') as f:
