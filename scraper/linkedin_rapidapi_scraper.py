@@ -16,6 +16,8 @@ from api_scraper import (
 HOST = (os.environ.get('LINKEDIN_RAPIDAPI_HOST') or 'linkedin-job-search-api.p.rapidapi.com').strip()
 PATH = (os.environ.get('LINKEDIN_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
 KEY = os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+MAX_REQUESTS = int(os.environ.get('LINKEDIN_RAPIDAPI_MAX_REQUESTS') or '4')
+STOP_STATUSES = {401, 403, 429}
 
 
 def env_list(name, fallback):
@@ -25,21 +27,15 @@ def env_list(name, fallback):
 
 
 TITLES = env_list('LINKEDIN_SEARCH_TITLES', [
-    'Data Engineer',
-    'Software Engineer',
-    'Backend Engineer',
-    'Frontend Developer',
+    'Spanish',
+    'Spanish Speaking',
+    'Latam Remote',
     'Account Manager Spanish',
-    'Customer Success Spanish',
-    'Marketing Manager Spanish',
-    'Operations Manager Spanish',
 ])
 
 LOCATIONS = env_list('LINKEDIN_SEARCH_LOCATIONS', [
     'Latin America OR Spain OR Mexico OR Colombia OR Chile OR Argentina',
     'Remote OR LATAM OR Spain',
-    'Mexico OR Colombia OR Chile OR Argentina OR Peru',
-    'Spain',
 ])
 
 
@@ -101,9 +97,14 @@ def scrape_linkedin_rapidapi():
     }
     jobs = []
     seen_urls = set()
+    request_count = 0
 
     for title_filter in TITLES:
         for location_filter in LOCATIONS:
+            if request_count >= MAX_REQUESTS:
+                print(f'LinkedIn RapidAPI: stopped after {MAX_REQUESTS} requests to protect quota')
+                return jobs
+
             query = urlencode({
                 'offset': 0,
                 'title_filter': title_filter,
@@ -112,8 +113,12 @@ def scrape_linkedin_rapidapi():
             })
             url = f'https://{HOST}/{PATH}?{query}'
             status, data = http_get(url, headers=headers, timeout=25)
+            request_count += 1
             if status != 200:
                 print(f'LinkedIn RapidAPI {title_filter}/{location_filter}: HTTP {status}')
+                if status in STOP_STATUSES:
+                    print('LinkedIn RapidAPI: stopping to protect quota/auth after quota or auth response')
+                    return jobs
                 continue
 
             items = extract_items(data)
