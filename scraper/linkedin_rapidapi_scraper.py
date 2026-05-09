@@ -13,10 +13,6 @@ from api_scraper import (
     make_job,
 )
 
-HOST = (os.environ.get('LINKEDIN_RAPIDAPI_HOST') or 'linkedin-job-search-api.p.rapidapi.com').strip()
-PATH = (os.environ.get('LINKEDIN_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
-KEY = os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
-MAX_REQUESTS = int(os.environ.get('LINKEDIN_RAPIDAPI_MAX_REQUESTS') or '4')
 STOP_STATUSES = {401, 403, 429}
 
 
@@ -30,13 +26,45 @@ TITLES = env_list('LINKEDIN_SEARCH_TITLES', [
     'Spanish',
     'Spanish Speaking',
     'Latam Remote',
+    'Remote Spanish',
     'Account Manager Spanish',
+    'Customer Success Spanish',
+    'Data Spanish',
 ])
 
 LOCATIONS = env_list('LINKEDIN_SEARCH_LOCATIONS', [
     'Latin America OR Spain OR Mexico OR Colombia OR Chile OR Argentina',
     'Remote OR LATAM OR Spain',
 ])
+
+
+def linkedin_providers():
+    providers = []
+    key = os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+    host = (os.environ.get('LINKEDIN_RAPIDAPI_HOST') or 'linkedin-job-search-api.p.rapidapi.com').strip()
+    path = (os.environ.get('LINKEDIN_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
+    if key and host and path:
+        providers.append({
+            'source': 'linkedin_rapidapi',
+            'host': host,
+            'path': path,
+            'key': key,
+            'max_requests': int(os.environ.get('LINKEDIN_RAPIDAPI_MAX_REQUESTS') or '4'),
+        })
+
+    key2 = os.environ.get('LINKEDIN_API2_RAPIDAPI_KEY') or os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+    host2 = (os.environ.get('LINKEDIN_API2_RAPIDAPI_HOST') or 'linkedin-jobs-api2.p.rapidapi.com').strip()
+    path2 = (os.environ.get('LINKEDIN_API2_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
+    if key2 and host2 and path2:
+        providers.append({
+            'source': 'linkedin_api2',
+            'host': host2,
+            'path': path2,
+            'key': key2,
+            'max_requests': int(os.environ.get('LINKEDIN_API2_MAX_REQUESTS') or '4'),
+        })
+
+    return providers
 
 
 def pick(obj, *keys):
@@ -82,18 +110,11 @@ def extract_items(data):
     return []
 
 
-def scrape_linkedin_rapidapi():
-    if not KEY:
-        print('LinkedIn RapidAPI: skipped (requires LINKEDIN_RAPIDAPI_KEY or RAPIDAPI_KEY)')
-        return []
-    if not HOST or not PATH:
-        print('LinkedIn RapidAPI: skipped (missing host or path)')
-        return []
-
+def scrape_provider(provider):
     headers = {
         'Content-Type': 'application/json',
-        'x-rapidapi-host': HOST,
-        'x-rapidapi-key': KEY,
+        'x-rapidapi-host': provider['host'],
+        'x-rapidapi-key': provider['key'],
     }
     jobs = []
     seen_urls = set()
@@ -101,8 +122,8 @@ def scrape_linkedin_rapidapi():
 
     for title_filter in TITLES:
         for location_filter in LOCATIONS:
-            if request_count >= MAX_REQUESTS:
-                print(f'LinkedIn RapidAPI: stopped after {MAX_REQUESTS} requests to protect quota')
+            if request_count >= provider['max_requests']:
+                print(f"{provider['source']}: stopped after {provider['max_requests']} requests to protect quota")
                 return jobs
 
             query = urlencode({
@@ -111,18 +132,18 @@ def scrape_linkedin_rapidapi():
                 'location_filter': location_filter,
                 'description_type': 'text',
             })
-            url = f'https://{HOST}/{PATH}?{query}'
+            url = f"https://{provider['host']}/{provider['path']}?{query}"
             status, data = http_get(url, headers=headers, timeout=25)
             request_count += 1
             if status != 200:
-                print(f'LinkedIn RapidAPI {title_filter}/{location_filter}: HTTP {status}')
+                print(f"{provider['source']} {title_filter}/{location_filter}: HTTP {status}")
                 if status in STOP_STATUSES:
-                    print('LinkedIn RapidAPI: stopping to protect quota/auth after quota or auth response')
+                    print(f"{provider['source']}: stopping to protect quota/auth after quota or auth response")
                     return jobs
                 continue
 
             items = extract_items(data)
-            print(f'LinkedIn RapidAPI {title_filter}/{location_filter}: {len(items)} jobs')
+            print(f"{provider['source']} {title_filter}/{location_filter}: {len(items)} jobs")
             for item in items:
                 if not isinstance(item, dict):
                     continue
@@ -143,7 +164,7 @@ def scrape_linkedin_rapidapi():
 
                 tags = [title_filter, location_filter, 'LinkedIn', 'RapidAPI']
                 jobs.append(make_job(
-                    source='linkedin_rapidapi',
+                    source=provider['source'],
                     source_url=job_url,
                     title=title or title_filter,
                     company=company,
@@ -157,6 +178,18 @@ def scrape_linkedin_rapidapi():
                     tags=tags,
                 ))
             time.sleep(1)
+    return jobs
+
+
+def scrape_linkedin_rapidapi():
+    providers = linkedin_providers()
+    if not providers:
+        print('LinkedIn RapidAPI: skipped (requires LINKEDIN_RAPIDAPI_KEY, LINKEDIN_API2_RAPIDAPI_KEY or RAPIDAPI_KEY)')
+        return []
+
+    jobs = []
+    for provider in providers:
+        jobs.extend(scrape_provider(provider))
     return jobs
 
 
