@@ -1,5 +1,6 @@
 const PROVIDERS = {
   RAPIDAPI_KEY: 'JSearch',
+  LINKEDIN_RAPIDAPI_KEY: 'LinkedIn RapidAPI',
   ADZUNA_APP_ID: 'Adzuna App ID',
   ADZUNA_APP_KEY: 'Adzuna App Key',
   JOOBLE_API_KEY: 'Jooble',
