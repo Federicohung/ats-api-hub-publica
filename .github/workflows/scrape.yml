@@ -108,6 +108,74 @@ jobs:
           python scraper/api_scraper.py
           python scraper/linkedin_rapidapi_scraper.py
 
+      - name: Keep only Spanish LATAM Spain and Caribbean jobs
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import unicodedata
+          from datetime import datetime, timezone
+
+          FILES = ['docs/jobs.json', 'scraper/data/jobs.json']
+          TERMS = [
+              'spanish', 'spanish speaking', 'spanish required', 'spanish speaker',
+              'bilingual spanish', 'espanol', 'español', 'castellano', 'idioma español',
+              'latam', 'latin america', 'latinoamerica', 'latinoamérica', 'america latina',
+              'américa latina', 'hispanoamerica', 'hispanoamérica', 'caribbean', 'caribe',
+              'spain', 'españa', 'madrid', 'barcelona', 'valencia', 'sevilla',
+              'mexico', 'méxico', 'cdmx', 'ciudad de mexico', 'ciudad de méxico',
+              'chile', 'santiago', 'colombia', 'bogota', 'bogotá', 'medellin', 'medellín',
+              'argentina', 'buenos aires', 'peru', 'perú', 'lima', 'uruguay', 'montevideo',
+              'ecuador', 'quito', 'guayaquil', 'costa rica', 'panama', 'panamá',
+              'guatemala', 'el salvador', 'honduras', 'nicaragua', 'bolivia', 'paraguay',
+              'venezuela', 'dominican republic', 'republica dominicana', 'república dominicana',
+              'puerto rico', 'cuba', 'jamaica', 'haiti', 'trinidad', 'barbados', 'belize',
+              'brazil', 'brasil', 'sao paulo', 'são paulo', 'rio de janeiro'
+          ]
+
+          def norm(value):
+              text = unicodedata.normalize('NFKD', str(value or '').lower())
+              text = ''.join(ch for ch in text if not unicodedata.combining(ch))
+              return re.sub(r'[^a-z0-9]+', ' ', text).strip()
+
+          TERMS = [norm(t) for t in TERMS]
+          PATTERNS = [re.compile(r'(?<![a-z0-9])' + re.escape(t) + r'(?![a-z0-9])') for t in TERMS]
+
+          def text(job):
+              market = job.get('market') or {}
+              return norm(' '.join([
+                  job.get('title', ''), job.get('company', ''), job.get('location', ''),
+                  job.get('description', ''), ' '.join(job.get('tags') or []),
+                  ' '.join(market.get('matches') or []),
+              ]))
+
+          def relevant(job):
+              haystack = text(job)
+              return any(p.search(haystack) for p in PATTERNS)
+
+          for path in FILES:
+              with open(path, 'r', encoding='utf-8') as f:
+                  data = json.load(f)
+              before = len(data.get('jobs') or [])
+              jobs = [job for job in data.get('jobs', []) if relevant(job)]
+              source_counts = {}
+              cat_counts = {k: 0 for k in (data.get('categories') or {})}
+              for job in jobs:
+                  source = job.get('source', 'unknown')
+                  source_counts[source] = source_counts.get(source, 0) + 1
+                  for cat in job.get('categories') or ['general']:
+                      cat_counts[cat] = cat_counts.get(cat, 0) + 1
+              data['updatedAt'] = datetime.now(timezone.utc).isoformat()
+              data['totalJobs'] = len(jobs)
+              data['sources'] = dict(sorted(source_counts.items()))
+              data['categories'] = cat_counts
+              data['jobs'] = jobs
+              with open(path, 'w', encoding='utf-8') as f:
+                  json.dump(data, f, ensure_ascii=False, indent=2)
+              print(f'{path}: kept {len(jobs)} of {before} strict Spanish/LATAM/Spain/Caribbean jobs')
+          PY
+
       - name: Commit generated data
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
