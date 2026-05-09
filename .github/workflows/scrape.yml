@@ -11,6 +11,9 @@ on:
       - "scraper/**"
       - ".github/workflows/scrape.yml"
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 permissions:
   contents: write
 
@@ -26,6 +29,57 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Stabilize scraper runtime
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('scraper/api_scraper.py')
+          text = path.read_text(encoding='utf-8')
+
+          if 'from urllib.parse import quote' not in text:
+              text = text.replace(
+                  'from urllib.error import URLError, HTTPError\n',
+                  'from urllib.error import URLError, HTTPError\nfrom urllib.parse import quote\n',
+              )
+
+          helper = """
+def posted_at_sort_value(value):
+    if value is None:
+        return 0
+    if isinstance(value, (int, float)):
+        timestamp = float(value)
+        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp
+    text = str(value).strip()
+    if not text:
+        return 0
+    if text.isdigit():
+        timestamp = float(text)
+        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp
+    try:
+        normalized = text.replace('Z', '+00:00')
+        return datetime.fromisoformat(normalized).timestamp()
+    except ValueError:
+        return 0
+
+"""
+          if 'def posted_at_sort_value(' not in text:
+              text = text.replace(
+                  "def make_id(source, source_id):\n",
+                  helper + "def make_id(source, source_id):\n",
+              )
+
+          old_torre = "status, data = http_get(f'https://api.torre.co/opportunities/_search/?keyword={q}&remote=true&size=25&offset=0')"
+          new_torre = "keyword = quote(q, safe='')\n            status, data = http_get(f'https://api.torre.co/opportunities/_search/?keyword={keyword}&remote=true&size=25&offset=0')"
+          text = text.replace(old_torre, new_torre)
+          text = text.replace(
+              "all_jobs.sort(key=lambda j: j.get('postedAt', ''), reverse=True)",
+              "all_jobs.sort(key=lambda j: posted_at_sort_value(j.get('postedAt')), reverse=True)",
+          )
+
+          path.write_text(text, encoding='utf-8')
+          PY
 
       - name: Scrape job APIs and ATS providers
         env:
