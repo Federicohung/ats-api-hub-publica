@@ -1,0 +1,38 @@
+name: Google Jobs sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 8,20 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  google-jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Scrape Google Jobs RapidAPI
+        env:
+          GOOGLE_JOBS_RAPIDAPI_KEY: ${{ secrets.GOOGLE_JOBS_RAPIDAPI_KEY }}
+          GOOGLE_JOBS_INCLUDES: ${{ vars.GOOGLE_JOBS_INCLUDES }}
+          GOOGLE_JOBS_MAX_REQUESTS: ${{ vars.GOOGLE_JOBS_MAX_REQUESTS }}
+        run: python scraper/google_jobs_rapidapi_scraper.py
+
+      - name: Keep Spanish-language or explicit Spanish-required jobs
+        run: python scraper/spanish_quality_filter.py
+
+      - name: Commit Google Jobs data
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Update Google Jobs data"
+          file_pattern: "docs/jobs.json scraper/data/jobs.json"
