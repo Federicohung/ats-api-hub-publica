@@ -14,7 +14,7 @@ from api_scraper import (
 )
 
 HOST = 'job-postings-rss-feed.p.rapidapi.com'
-KEY = os.environ.get('RSS_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+KEY = os.environ.get('RSS_RAPIDAPI_KEY')
 MAX_REQUESTS = int(os.environ.get('RSS_JOB_MAX_REQUESTS') or '8')
 STOP_STATUSES = {401, 403, 429}
 
@@ -83,7 +83,7 @@ def posted_at_sort_value(value):
 
 def scrape_rss_rapidapi():
     if not KEY:
-        print('RapidAPI RSS jobs: skipped (requires RSS_RAPIDAPI_KEY or RAPIDAPI_KEY)')
+        print('RapidAPI RSS jobs: skipped (requires RSS_RAPIDAPI_KEY)')
         return []
 
     headers = {
