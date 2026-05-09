@@ -13,8 +13,8 @@ from api_scraper import (
     make_job,
 )
 
-HOST = os.environ.get('LINKEDIN_RAPIDAPI_HOST', 'linkedin-job-search-api.p.rapidapi.com')
-PATH = os.environ.get('LINKEDIN_RAPIDAPI_PATH', 'active-jb-1h').strip('/')
+HOST = (os.environ.get('LINKEDIN_RAPIDAPI_HOST') or 'linkedin-job-search-api.p.rapidapi.com').strip()
+PATH = (os.environ.get('LINKEDIN_RAPIDAPI_PATH') or 'active-jb-1h').strip('/')
 KEY = os.environ.get('LINKEDIN_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
 
 
@@ -51,6 +51,25 @@ def pick(obj, *keys):
     return ''
 
 
+def posted_at_sort_value(value):
+    if value is None:
+        return 0
+    if isinstance(value, (int, float)):
+        timestamp = float(value)
+        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp
+    text = str(value).strip()
+    if not text:
+        return 0
+    if text.isdigit():
+        timestamp = float(text)
+        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp
+    try:
+        normalized = text.replace('Z', '+00:00')
+        return datetime.fromisoformat(normalized).timestamp()
+    except ValueError:
+        return 0
+
+
 def extract_items(data):
     if isinstance(data, list):
         return data
@@ -70,6 +89,9 @@ def extract_items(data):
 def scrape_linkedin_rapidapi():
     if not KEY:
         print('LinkedIn RapidAPI: skipped (requires LINKEDIN_RAPIDAPI_KEY or RAPIDAPI_KEY)')
+        return []
+    if not HOST or not PATH:
+        print('LinkedIn RapidAPI: skipped (missing host or path)')
         return []
 
     headers = {
@@ -142,7 +164,7 @@ def load_existing():
 
 def write_output(existing, new_jobs):
     all_jobs = deduplicate((existing.get('jobs') or []) + new_jobs)
-    all_jobs.sort(key=lambda j: j.get('postedAt', ''), reverse=True)
+    all_jobs.sort(key=lambda j: posted_at_sort_value(j.get('postedAt')), reverse=True)
 
     cat_counts = {}
     for cat in CATEGORY_KEYWORDS:
