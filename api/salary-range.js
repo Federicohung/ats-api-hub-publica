@@ -4,7 +4,7 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-store, max-age=0');
 
-  const key = process.env.JOBS_API14_RAPIDAPI_KEY || process.env.RAPIDAPI_KEY;
+  const key = process.env.JOBS_API14_RAPIDAPI_KEY;
   if (!key) {
     return res.status(501).json({
       ok: false,
