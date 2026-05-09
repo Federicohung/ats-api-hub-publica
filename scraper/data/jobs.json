@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "schema": "api-aggregator",
-  "updatedAt": "2026-05-09T07:50:20.489096+00:00",
+  "updatedAt": "2026-05-09T07:52:57.777311+00:00",
   "totalJobs": 124,
   "sources": {
     "arbeitnow": 1,
@@ -43,7 +43,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing",
       "postedAt": "2026-05-08T18:33:36-04:00",
-      "foundAt": "2026-05-09T07:49:52.215145+00:00",
+      "foundAt": "2026-05-09T07:52:30.582556+00:00",
       "categories": [
         "tecnologia",
         "datos"
@@ -74,7 +74,7 @@
       "salary": "No publicado",
       "description": "<h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing th",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:51.989845+00:00",
+      "foundAt": "2026-05-09T07:52:30.356383+00:00",
       "categories": [
         "ventas",
         "marketing"
@@ -105,7 +105,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are </strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented op",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.104809+00:00",
+      "foundAt": "2026-05-09T07:52:30.471777+00:00",
       "categories": [
         "tecnologia",
         "datos"
@@ -136,7 +136,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global econo",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.187736+00:00",
+      "foundAt": "2026-05-09T07:52:30.555069+00:00",
       "categories": [
         "rrhh",
         "datos"
@@ -166,7 +166,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are </strong></h2> <h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy ",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.270699+00:00",
+      "foundAt": "2026-05-09T07:52:30.638093+00:00",
       "categories": [
         "legal",
         "tecnologia"
@@ -197,7 +197,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy w",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.286245+00:00",
+      "foundAt": "2026-05-09T07:52:30.653601+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -229,7 +229,7 @@
       "salary": "No publicado",
       "description": "<h2 style=\"text-align: justify;\"><strong>Who we are </strong></h2> <h3 style=\"text-align: justify;\"><strong>About Stripe</strong></h3> <p style=\"text-align: justify;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of ",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.404161+00:00",
+      "foundAt": "2026-05-09T07:52:30.771518+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -260,7 +260,7 @@
       "salary": "No publicado",
       "description": "<h2 style=\"text-align: justify;\"><strong>Who we are </strong></h2> <h3 style=\"text-align: justify;\"><strong>About Stripe</strong></h3> <p style=\"text-align: justify;\"><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet,",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.413253+00:00",
+      "foundAt": "2026-05-09T07:52:30.780609+00:00",
       "categories": [
         "rrhh",
         "datos"
@@ -291,7 +291,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are </strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented op",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.453352+00:00",
+      "foundAt": "2026-05-09T07:52:30.820739+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -322,7 +322,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are </strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented op",
       "postedAt": "2026-05-08T17:59:17-04:00",
-      "foundAt": "2026-05-09T07:49:52.854140+00:00",
+      "foundAt": "2026-05-09T07:52:31.221154+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -353,7 +353,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><div><strong>About Us</strong></div> <div> <p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet prope",
       "postedAt": "2026-05-08T16:40:11-04:00",
-      "foundAt": "2026-05-09T07:49:56.624929+00:00",
+      "foundAt": "2026-05-09T07:52:34.865178+00:00",
       "categories": [
         "tecnologia",
         "ventas"
@@ -382,7 +382,7 @@
       "salary": "No publicado",
       "description": "<p><span style=\"font-size: 12pt;\">Datadog is looking for a results-driven Senior Regional Manager of Sales Engineering to hire and lead Sales Engineering Managers and their teams in our Commercial segment, driving new logo acquisition across the LATAM region. As a member of the regional Sales Engineering leadership team, you will partner with Sales, Product, and Marketing counterparts to power a high-velocity go-to-market motion, helping prospective customers quickly evaluate Datadog and adopt o",
       "postedAt": "2026-05-08T09:53:07-04:00",
-      "foundAt": "2026-05-09T07:49:54.942057+00:00",
+      "foundAt": "2026-05-09T07:52:33.224697+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -413,7 +413,7 @@
       "salary": "No publicado",
       "description": "Auch wenn Wikipedia etwas anderes behauptet: Panama liegt nicht in Mittelamerika, sondern in Stuttgart – und ist eine inhabergeführte Kreativagentur mit tollen Kunden und spannenden Projekten quer durch alle Medien. Du brauchst also kein Visum, um bei uns einzusteigen – nur deine außergewöhnlichen Fähigkeiten und viel Leidenschaft für herausragende Kommunikation. Und dabei macht jede*r Einzelne den Unterschied. Aufgaben Betreuung einer Kundenwebseite sowie Betreuung und Steuerung von integrierte",
       "postedAt": "1778230844",
-      "foundAt": "2026-05-09T07:49:29.041752+00:00",
+      "foundAt": "2026-05-09T07:52:08.517555+00:00",
       "categories": [
         "tecnologia",
         "ventas"
@@ -442,7 +442,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-05-07T19:01:05-04:00",
-      "foundAt": "2026-05-09T07:49:58.505205+00:00",
+      "foundAt": "2026-05-09T07:52:36.683347+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -473,7 +473,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while d",
       "postedAt": "2026-05-07T11:24:12-04:00",
-      "foundAt": "2026-05-09T07:49:52.840192+00:00",
+      "foundAt": "2026-05-09T07:52:31.207277+00:00",
       "categories": [
         "marketing",
         "operaciones"
@@ -503,7 +503,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p>&nbsp;</p> <p><",
       "postedAt": "2026-05-07T11:20:04-04:00",
-      "foundAt": "2026-05-09T07:49:50.245326+00:00",
+      "foundAt": "2026-05-09T07:52:28.663149+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -532,7 +532,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p>&nbsp;</p> <p><",
       "postedAt": "2026-05-07T10:12:21-04:00",
-      "foundAt": "2026-05-09T07:49:50.293137+00:00",
+      "foundAt": "2026-05-09T07:52:28.711308+00:00",
       "categories": [
         "rrhh",
         "ventas"
@@ -564,7 +564,7 @@
       "salary": "No publicado",
       "description": "<p>The mission of OrgStore is to provide an easy-to-use, fully-managed platform to store and search data. With Postgres as our cornerstone technology, we focus on transactional (OLTP) data use-cases while providing a custom data plane and a flexible administrative layer. Our users are the thousands of engineers representing hundreds of teams producing products at Datadog. As a platform infrastructure team, our goal is to accelerate product teams by helping them rapidly stand up new features and ",
       "postedAt": "2026-05-07T06:58:52-04:00",
-      "foundAt": "2026-05-09T07:49:54.573387+00:00",
+      "foundAt": "2026-05-09T07:52:32.853829+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -596,7 +596,7 @@
       "salary": "No publicado",
       "description": "We Make Remote Work Remarkable â¢ TopTalent from LatAm Hello! We are GoFasti, a Talent-as-a-Service. GoFasti bridges the gap between world-class developers and designers from LatAm and first-class companies around the globe. We need an English-fluent Project Manager, based in Latin America, available to work remotely. We are looking for someone with exceptional communication and relationship-building skills, who embraces changes while maintaining strong attention to detail. An interested and pr",
       "postedAt": "2026-05-07T00:01:03+00:00",
-      "foundAt": "2026-05-09T07:49:49.915442+00:00",
+      "foundAt": "2026-05-09T07:52:28.400640+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -628,7 +628,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>GitLab is the intelligent orchestration platform for DevSecOps. GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation. More than 50 million registered users and more than 50% of the Fortune 100* trust GitLab to ship better, more secure software faster.</p> <p>The same principles built into our products are reflected in how our team works: we embrace ",
       "postedAt": "2026-05-06T13:55:11-04:00",
-      "foundAt": "2026-05-09T07:50:00.667053+00:00",
+      "foundAt": "2026-05-09T07:52:38.771489+00:00",
       "categories": [
         "rrhh",
         "tecnologia"
@@ -658,7 +658,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>GitLab is the intelligent orchestration platform for DevSecOps. GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation. More than 50 million registered users and more than 50% of the Fortune 100* trust GitLab to ship better, more secure software faster.</p> <p>The same principles built into our products are reflected in how our team works: we embrace ",
       "postedAt": "2026-05-06T12:27:53-04:00",
-      "foundAt": "2026-05-09T07:50:00.729987+00:00",
+      "foundAt": "2026-05-09T07:52:38.834561+00:00",
       "categories": [
         "rrhh",
         "tecnologia"
@@ -689,7 +689,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-05-06T11:43:22-04:00",
-      "foundAt": "2026-05-09T07:49:50.782389+00:00",
+      "foundAt": "2026-05-09T07:52:29.203043+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -720,7 +720,7 @@
       "salary": "No publicado",
       "description": "<p><a href=\"https://www.datadoghq.com/product/product-analytics/\">Product Analytics</a> aims to help developers, product managers and designers understand their users, take data-oriented product decisions and evaluate the impact of technical issues on their customer base. As a Senior Software Engineer on the Product Analytics Backend team, you'll join a new, fast-growing product area. You will help define our technical vision, influence the product roadmap, and solve complex engineering challeng",
       "postedAt": "2026-05-06T09:22:01-04:00",
-      "foundAt": "2026-05-09T07:49:54.833792+00:00",
+      "foundAt": "2026-05-09T07:52:33.116464+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -752,7 +752,7 @@
       "salary": "No publicado",
       "description": "<p>The eBPF Platform team owns the shared eBPF infrastructure inside the Datadog Agent, and is responsible for its reliability, performance, and evolution across a wide variety of Linux distributions and kernel versions. We build tooling and agent functionality for product teams utilizing eBPF (Network Performance Monitoring, Universal Service Monitoring, Cloud Workload Security, GPU Monitoring), enable new teams exploring eBPF, and centralize deep kernel expertise across the organization. The t",
       "postedAt": "2026-05-06T08:32:07-04:00",
-      "foundAt": "2026-05-09T07:49:54.993896+00:00",
+      "foundAt": "2026-05-09T07:52:33.276603+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -783,7 +783,7 @@
       "salary": "No publicado",
       "description": "<p><strong>The Team:</strong></p> <p>As a function of Data dog's GTM Enablement &amp; Business Value department, the Business Value team partners with go-to-market teams to deliver impactful business cases to our customers to justify their investment in Datadog. Our GTM Enablement org works with a best-in-class product that solves real problems for our customers, and our Business Value team plays a key role in instilling value selling practices across the entire sales and CS organization. From b",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.148429+00:00",
+      "foundAt": "2026-05-09T07:52:32.426269+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -814,7 +814,7 @@
       "salary": "No publicado",
       "description": "<p>As an Account Executive (AE) on our Commercial Sales team, you will assist in Datadog’s overall business growth by strategically engaging and closing net-new customers across small to midsize markets. Sellers follow a well-defined methodology, collaborate with internal stakeholders, identify the customer's unique needs, and clearly convey the value of the Datadog product. AEs have the opportunity to grow their careers in Sales and continue contributing to Datadog team success.</p> <p><em>At D",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.179597+00:00",
+      "foundAt": "2026-05-09T07:52:32.457674+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -844,7 +844,7 @@
       "salary": "No publicado",
       "description": "<p>As an Account Executive (AE) on our Commercial Sales team, you will assist in Datadog’s overall business growth by strategically engaging and closing net-new customers across small to midsize markets. Sellers follow a well-defined methodology, collaborate with internal stakeholders, identify the customer's unique needs, and clearly convey the value of the Datadog product. AEs have the opportunity to grow their careers in Sales and continue contributing to Datadog team success.</p> <p><em>At D",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.182197+00:00",
+      "foundAt": "2026-05-09T07:52:32.460213+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -874,7 +874,7 @@
       "salary": "No publicado",
       "description": "<p>As an Account Executive (AE) on our Commercial Sales team, you will assist in Datadog’s overall business growth by strategically engaging and closing net-new customers across small to midsize markets. Sellers follow a well-defined methodology, collaborate with internal stakeholders, identify the customer's unique needs, and clearly convey the value of the Datadog product. AEs have the opportunity to grow their careers in Sales and continue contributing to Datadog team success.</p> <p><em>At D",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.184701+00:00",
+      "foundAt": "2026-05-09T07:52:32.462687+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -906,7 +906,7 @@
       "salary": "No publicado",
       "description": "<p>G&amp;A at Datadog rapidly scales the physical space, hiring, onboarding, and financial and legal systems to keep our business running in top form.</p> <p>As a Deal Desk Analyst, you will work cross-functionally with our Sales Operations, Billing, Contracts and Legal teams to provide quoting and deal structuring support to the Global Sales Team. This will be a growth position as Datadog’s business continues to expand.</p> <p><em>At Datadog, we place value in our office culture - the relations",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.259979+00:00",
+      "foundAt": "2026-05-09T07:52:32.538217+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -935,7 +935,7 @@
       "salary": "No publicado",
       "description": "<p>Our Director, Enterprise Sales will provide strategy, mentorship, and guidance for a team of Enterprise Sales Executives who are responsible for driving new business through the full sales cycle.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensure our Datadogs can create a work-life harmony that best fits them.</em></p> <p><strong>What You’ll Do:&nbsp;<",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.265199+00:00",
+      "foundAt": "2026-05-09T07:52:32.543497+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -964,7 +964,7 @@
       "salary": "No publicado",
       "description": "<p>Our Director, Enterprise Sales will provide strategy, mentorship, and guidance for a team of Enterprise Sales Executives who are responsible for driving new business through the full sales cycle.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensure our Datadogs can create a work-life harmony that best fits them.</em></p> <p><strong>What You’ll Do:&nbsp;<",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.270557+00:00",
+      "foundAt": "2026-05-09T07:52:32.548895+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -995,7 +995,7 @@
       "salary": "No publicado",
       "description": "<p>Datadog is seeking a strategic, results oriented Director to lead and scale our Technical Support Engineering (TSE) organization across LATAM. This leader will be responsible for strengthening and expanding our regional support presence, building high-performing teams, and ensuring operational excellence as we continue our rapid growth.You will lead a team of managers and support engineers in our LATAM region, partnering cross-functionally to deliver exceptional customer outcomes and consiste",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.306663+00:00",
+      "foundAt": "2026-05-09T07:52:32.585230+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -1026,7 +1026,7 @@
       "salary": "No publicado",
       "description": "<p><span style=\"font-weight: 400;\">As an Enterprise Sales Engineer, you will provide technical expertise through sales presentations, product demonstrations, and supporting technical evaluations (POVs). Sales Engineers help qualify and close opportunities with customers and partners and have a voice with the product team to help prioritize features based on input from customers, competitors, and partners.</span></p> <p><em><span style=\"font-weight: 400;\">At Datadog, we place value in our office ",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.369408+00:00",
+      "foundAt": "2026-05-09T07:52:32.648298+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1055,7 +1055,7 @@
       "salary": "No publicado",
       "description": "<p><span style=\"font-weight: 400;\">As an Enterprise Sales Engineer, you will provide technical expertise through sales presentations, product demonstrations, and supporting technical evaluations (POVs). Sales Engineers help qualify and close opportunities with customers and partners and have a voice with the product team to help prioritize features based on input from customers, competitors, and partners.</span></p> <p><strong>What You’ll Do:</strong></p> <ul> <li style=\"font-weight: 400;\"><span",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.374650+00:00",
+      "foundAt": "2026-05-09T07:52:32.653569+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1087,7 +1087,7 @@
       "salary": "No publicado",
       "description": "<p><strong>Location:</strong> São Paulo, Brazil<br><strong>Reports to:</strong> Director, Field Enablement<br><strong>Travel:</strong> ~30%</p> <p><strong>The Team</strong></p> <p>Our GTM Enablement team plays a critical role in helping Datadog’s Sales and Customer Success teams succeed by equipping them with the right skills, knowledge, and tools at the right time. We partner closely with teams across Sales, Customer Success, Product Marketing, Curriculum, and Operations to ensure enablement pr",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.458101+00:00",
+      "foundAt": "2026-05-09T07:52:32.737722+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -1120,7 +1120,7 @@
       "salary": "No publicado",
       "description": "<p>The Incident and Escalation Management team (IEM) is part of Datadog's Global Support Engineering (GSE) organization. The purpose of IEM is to continuously improve Datadog's overall customer experience during incidents and critical moments. Datadog Global Support Engineering (GSE) is looking for experts with a background in Incident Management and Escalations handling to join our team to provide fast incident response and stakeholder ownership. In this position, you will play a role in provid",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.494876+00:00",
+      "foundAt": "2026-05-09T07:52:32.774727+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1150,7 +1150,7 @@
       "salary": "No publicado",
       "description": "<p>Datadog is seeking a Manager, Sales Engineering to join our high-growth organization and world-class pre-sales team. You will manage a team of talented Sales Engineers to help qualify and close opportunities and coach the team on their approach to providing technical expertise through sales presentations, product demonstrations, and supporting technical evaluations (POCs). This is a hands-on management role where you will take an active technical role in your region supporting customer facing",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.537659+00:00",
+      "foundAt": "2026-05-09T07:52:32.817919+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -1179,7 +1179,7 @@
       "salary": "No publicado",
       "description": "<p>As a Manager, Commercial Sales, you will provide strategy, mentorship, and guidance for a team of Commercial Account Executives. This role impacts one of the largest lines of business in the company, ultimately bringing a proven product to a multi-billion dollar market.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensure our Datadogs can create a work-l",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.539839+00:00",
+      "foundAt": "2026-05-09T07:52:32.820122+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -1209,7 +1209,7 @@
       "salary": "No publicado",
       "description": "<p>APM Data Hub is at the core of APM, one of the product pillars of Datadog. Our team is responsible for the backend pipeline that processes, transforms, and routes tracing data at scale after ingestion. Our mission is to extend the pipeline's capabilities so that multiple products across Datadog can leverage the rich data present in traces — serving not only APM Distributed Tracing but a growing number of product teams that depend on this data.</p> <p>As an Engineering Manager for APM Data Hub",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.553136+00:00",
+      "foundAt": "2026-05-09T07:52:32.833490+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -1240,7 +1240,7 @@
       "salary": "No publicado",
       "description": "<p>Datadog is looking for an Engineering Manager to lead and grow our Code Coverage team, which is building the next generation of AI-powered developer tooling. This team owns Datadog’s Code Coverage product across the entire stack, helping customers track and enforce test coverage. Code Coverage is part of the Software Delivery suite, which enables engineering teams to move faster and more securely.</p> <p>In this role, you will lead and develop a high-performing engineering team in an ambiguou",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.561796+00:00",
+      "foundAt": "2026-05-09T07:52:32.842114+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1271,7 +1271,7 @@
       "salary": "No publicado",
       "description": "<p>Graphing Experience creates simple tools that enable all users to explore data and communicate insights through visualizations. As the Engineering Manager for the team, you will lead critical product initiatives that enable Datadog to grow its business.&nbsp;</p> <p>You will define our technical vision and shape the product roadmap, working closely with product managers and engineers on the team. You will support growing the team, onboarding new hires and growing engineers to the next level. ",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.570625+00:00",
+      "foundAt": "2026-05-09T07:52:32.851051+00:00",
       "categories": [
         "rrhh",
         "tecnologia"
@@ -1302,7 +1302,7 @@
       "salary": "No publicado",
       "description": "<p>The REDAPL organization is seeking an experienced and strategic leader to oversee our Resource Graph team. REDAPL is Datadog’s main platform for tracking our customers’ infrastructure resources and relationships. REDAPL Resource Graph also plays a key role in serving Datadog’s Security products.</p> <p>This position will play a critical role in driving the future of our data infrastructure and ensuring the highest level of performance and reliability for our systems. As the team is also quick",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.576404+00:00",
+      "foundAt": "2026-05-09T07:52:32.856856+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -1333,7 +1333,7 @@
       "salary": "No publicado",
       "description": "<p>As a Manager, Mid-Market Sales, you will provide strategy, mentorship, and guidance for a team of Mid-Market Account Executives. This role impacts one of the largest lines of business in the company, ultimately bringing a proven product to a multi-billion dollar market and selling into companies from 1,000 to 5,000 employees.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hy",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.610596+00:00",
+      "foundAt": "2026-05-09T07:52:32.891786+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -1362,7 +1362,7 @@
       "salary": "No publicado",
       "description": "<p>Datadog is seeking a Marketing Operations Manager to join our growing global Campaign Operations team, reporting to the Director of Campaign Operations. As the first Campaign Operations hire in the LATAM region, you’ll have the unique opportunity to shape and drive our regional email strategy. You’ll work closely with marketing partners to lead campaign execution, optimization, and performance reporting while helping to scale programs for a fast-growing business. This role offers significant ",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.635831+00:00",
+      "foundAt": "2026-05-09T07:52:32.917327+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -1393,7 +1393,7 @@
       "salary": "No publicado",
       "description": "<p><strong>The Team:</strong></p> <p>We are Datadog's in-house product experts. The technical solutions team enables Datadog's worldwide growth by educating potential clients and ensuring that existing customers are happy and successful. We share our technical and product expertise with customers through demos, presentations, technical evaluations, and ongoing support. Technical solutions is a growing global team that collaborates constantly to share knowledge and continuously advance our techni",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.681939+00:00",
+      "foundAt": "2026-05-09T07:52:32.963694+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1426,7 +1426,7 @@
       "salary": "No publicado",
       "description": "<p>We are Datadog's in-house product experts. The technical solutions team enables Datadog's worldwide growth by educating potential clients and ensuring that existing customers are happy and successful.</p> <p>&nbsp;</p> <p>The Partner Solution Architect (PSA) is a Datadog expert who will work closely with Datadog’s Director of Partner Solutions Architects, and is aligned to our Channels &amp; Alliances business segment. The PSA is responsible for supporting a variety of technical initiatives a",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.687735+00:00",
+      "foundAt": "2026-05-09T07:52:32.969552+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1459,7 +1459,7 @@
       "salary": "No publicado",
       "description": "<p>We are looking for an experienced Partner Sales Manager to ignite partnerships by identifying and recruiting new partners for long-term success and nurture ongoing relationships with key strategic Global Systems Integrator partners. Our ultimate goal is building channels and alliances that drive new customer adoption and revenue. This is a great opportunity for you to join a high-growth cloud software company and help blaze the path for our company's expansion.</p> <p><em>At Datadog, we place",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.707188+00:00",
+      "foundAt": "2026-05-09T07:52:32.989211+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1490,7 +1490,7 @@
       "salary": "No publicado",
       "description": "<p>As a Sales Development Representative (SDR), you will prospect, qualify, and generate customer leads to assist in Datadog’s overall business growth segment. By partnering with internal stakeholders, you will help IT and Technology innovators across markets recognize Datadog’s impact in their digital transformation and migration to the cloud. SDRs have the opportunity to grow their careers in Sales and continue contributing to Datadog team success.</p> <p><em>At Datadog, we place value in our ",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.793884+00:00",
+      "foundAt": "2026-05-09T07:52:33.076475+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -1520,7 +1520,7 @@
       "salary": "No publicado",
       "description": "<p>We’re a new team building AI-assisted tools to make Datadog developers more effective, by autonomously generating tests, fixing bugs, and improving performance.</p> <p>We’re looking for a product-minded generalist to help us quickly define and ship products that make all Datadog customers 10x developers.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensu",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.818212+00:00",
+      "foundAt": "2026-05-09T07:52:33.100820+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1552,7 +1552,7 @@
       "salary": "No publicado",
       "description": "<p>At Datadog, we’re on a mission to bring security and observability together for modern organizations. <a href=\"https://www.datadoghq.com/blog/bits-ai-security-analyst/\">Bits AI for Security</a> is our AI agent that leverages LLMs to help analysts investigate alerts, understand threats, and respond faster. We’re looking for a product-minded AI Engineer to help us build the next generation of AI-driven security capabilities.</p> <p><em>At Datadog, we place value in our office culture - the rela",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.824092+00:00",
+      "foundAt": "2026-05-09T07:52:33.106752+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1584,7 +1584,7 @@
       "salary": "No publicado",
       "description": "<p>We’re a new team building AI-assisted tools to make Datadog developers more effective, by autonomously generating tests, fixing bugs, and improving performance.</p> <p>We’re looking for a product-minded generalist to help us quickly define and ship products that make all Datadog customers 10x developers.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensu",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.860031+00:00",
+      "foundAt": "2026-05-09T07:52:33.142699+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1616,7 +1616,7 @@
       "salary": "No publicado",
       "description": "<p>We’re a new team building AI-assisted tools to make Datadog developers more effective, by autonomously generating tests, fixing bugs, and improving performance.</p> <p>We’re looking for a product-minded generalist to help us quickly define and ship products that make all Datadog customers 10x developers.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensu",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.871732+00:00",
+      "foundAt": "2026-05-09T07:52:33.154382+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1648,7 +1648,7 @@
       "salary": "No publicado",
       "description": "<p>The Senior Payroll Manager is responsible for ensuring accurate, compliant, and timely payroll processing, with a strong focus on wage and tax reporting, payroll transformation initiatives, and team leadership. The ideal candidate combines deep technical payroll expertise with project management capabilities and a results-driven mindset. Overall, the Senior Payroll Manager will be tasked to lead and optimize payroll operations across the United States, Canada, and Latin America (LATAM).</p> <",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.878211+00:00",
+      "foundAt": "2026-05-09T07:52:33.160880+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -1683,7 +1683,7 @@
       "salary": "No publicado",
       "description": "<p>As a Senior Cloud Alliance Manager, you will lead and expand our Global Strategic Partnership with key Cloud Providers. In this role, you will be responsible for driving joint go-to-market initiatives, deepening technical integrations, executing agreements, and maximizing revenue opportunities through programs and sales motions. This position requires a highly strategic and execution-focused leader with a deep understanding of the cloud ecosystem, cloud technologies, and partner management.</",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.889181+00:00",
+      "foundAt": "2026-05-09T07:52:33.171851+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -1714,7 +1714,7 @@
       "salary": "No publicado",
       "description": "<p>We are looking for an experienced Principal Partner Manager to build and accelerate growth with our top Security focused channel partners in Latin America.&nbsp; Our ultimate goal is building channels and alliances that drive new customer adoption and revenue. In this role, you will drive Datadog’s business relationships by analyzing partner business performance, identifying methods of increasing partner and Datadog returns, and identifying opportunities with your named partners to position D",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.906386+00:00",
+      "foundAt": "2026-05-09T07:52:33.189080+00:00",
       "categories": [
         "tecnologia",
         "marketing"
@@ -1745,7 +1745,7 @@
       "salary": "No publicado",
       "description": "<p>We are Datadog's in-house product experts. The technical solutions team enables Datadog's worldwide growth by educating potential clients and ensuring that existing customers are happy and successful. We share our technical and product expertise with customers through demos, presentations, technical evaluations, and ongoing support. Technical solutions is a growing global team that collaborates constantly to share knowledge and continuously advance our technical skillset.</p> <p>The Logs fami",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.934263+00:00",
+      "foundAt": "2026-05-09T07:52:33.216869+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1777,7 +1777,7 @@
       "salary": "No publicado",
       "description": "<p>As an Enterprise Sales Engineer, you will provide technical expertise through sales presentations, product demonstrations, and supporting technical evaluations (POVs). Sales Engineers help qualify and close opportunities with customers and partners and have a voice with the product team to help prioritize features based on input from customers, competitors, and partners.</p> <p><em>At Datadog, we place value in our office culture—the relationships and collaboration it builds and the creativit",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.947578+00:00",
+      "foundAt": "2026-05-09T07:52:33.230189+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1806,7 +1806,7 @@
       "salary": "No publicado",
       "description": "<p>We’re a new team building AI-assisted tools to make Datadog developers more effective, by autonomously generating tests, fixing bugs, and improving performance.</p> <p>We’re looking for a product-minded generalist to help us quickly define and ship products that make all Datadog customers 10x developers.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybrid workplace to ensu",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.964169+00:00",
+      "foundAt": "2026-05-09T07:52:33.246774+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1838,7 +1838,7 @@
       "salary": "No publicado",
       "description": "<p>We’re building a new team building to bring the power of Datadog to developers within AI-focused Developer workflows such as AI agents like Cursor, Claude code, GitHub Copilot and Datadog’s native AI agents.</p> <p>&nbsp;</p> <p>We’re looking for product-minded engineers who are excited about developer tools, SDLC improvements and AI in general to help us quickly define and ship features and tools that make all Datadog customers 10x developers.</p> <p><em>At Datadog, we place value in our off",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:54.967002+00:00",
+      "foundAt": "2026-05-09T07:52:33.249601+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1870,7 +1870,7 @@
       "salary": "No publicado",
       "description": "<p>Our Strategic Account Executives target and close new business with Datadog’s largest, most strategic customers and prospects. In this role you’ll be focused on uncovering the pain points organizations face as they operate in or migrate to a cloud environment at scale as well as delivering the appropriate Datadog solution.</p> <p><em>At Datadog, we place value in our office culture - the relationships and collaboration it builds and the creativity it brings to the table. We operate as a hybri",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:55.144163+00:00",
+      "foundAt": "2026-05-09T07:52:33.428016+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -1901,7 +1901,7 @@
       "salary": "No publicado",
       "description": "<p>We are Datadog's in-house product experts. The Technical Solutions team enables Datadog’s worldwide growth by educating potential clients and ensuring that existing customers are happy and successful. As a Technical Account Manager 2 (TAM 2), you’ll serve as a trusted advisor to our strategic customers, accelerating their adoption of the Datadog platform and enabling long-term success. TAM 2s bring deep technical expertise, refined customer skills, and consultative insight into how monitoring",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:55.192386+00:00",
+      "foundAt": "2026-05-09T07:52:33.476193+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1931,7 +1931,7 @@
       "salary": "No publicado",
       "description": "<p><span style=\"font-weight: 400;\">We are Datadog's in-house product experts. The technical solutions team enables Datadog's worldwide growth by educating potential clients and ensuring that existing customers are happy and successful. A Technical Account Manager (TAM) will continue to provide hands-on technical services to our largest customers by supporting, adopting and providing guidance over the comprehensive suite of products and features available at Datadog. A TAM is held in high regard ",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:55.208147+00:00",
+      "foundAt": "2026-05-09T07:52:33.491905+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -1961,7 +1961,7 @@
       "salary": "No publicado",
       "description": "<p>We are Datadog's in-house product experts. The Technical Solutions team enables Datadog's worldwide growth by educating potential clients and ensuring that existing customers are happy and successful. We share our technical and product expertise with customers via multi-channel technical support, demos, and presentations. You’ll be joining a team and company where you will be challenged, but also will immediately witness your contributions to Datadog.</p> <p><em>At Datadog, we place value in ",
       "postedAt": "2026-05-05T16:22:59-04:00",
-      "foundAt": "2026-05-09T07:49:55.231661+00:00",
+      "foundAt": "2026-05-09T07:52:33.515489+00:00",
       "categories": [
         "rrhh",
         "tecnologia"
@@ -1991,7 +1991,7 @@
       "salary": "No publicado",
       "description": "About Bold Business Bold Business is an AI-first U.S. based global workforce solutions company rebuilding how businesses operate in the AI era. We build AI-Amplified Talentâ¢, custom AI agents, and automation systems for clients like AT&T, JP Morgan, and Verizon â and we back every engagement. If you want to build things that ship and matter, you'll fit right in. The RoleÂ You are the technical standard-setter and primary builder for how AI systems are designed, built, and shipped at Bold. Yo",
       "postedAt": "2026-05-05T00:00:52+00:00",
-      "foundAt": "2026-05-09T07:49:49.948081+00:00",
+      "foundAt": "2026-05-09T07:52:28.433328+00:00",
       "categories": [
         "tecnologia",
         "diseño"
@@ -2024,7 +2024,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><em>At Stripe, our Mexico City office is a vibrant hub at the forefront of our mission to reshape the financial landscape for businesses worldwide. Our team prioritizes collaboration, innovation, and excellence. As a member of the Mexico City team, you'll be part of a mission-driven community dedicated to enhancing the global economy and increasing the GDP of the internet. <br><br>We strive for excellence by creating with craft and beauty, while havin",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.092981+00:00",
+      "foundAt": "2026-05-09T07:52:30.459913+00:00",
       "categories": [
         "datos",
         "legal"
@@ -2055,7 +2055,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy wit",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.118985+00:00",
+      "foundAt": "2026-05-09T07:52:30.486028+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -2086,7 +2086,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy wit",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.139871+00:00",
+      "foundAt": "2026-05-09T07:52:30.506961+00:00",
       "categories": [
         "datos",
         "marketing"
@@ -2118,7 +2118,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy wit",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.281641+00:00",
+      "foundAt": "2026-05-09T07:52:30.649024+00:00",
       "categories": [
         "tecnologia",
         "marketing"
@@ -2150,7 +2150,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are </strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented op",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.408056+00:00",
+      "foundAt": "2026-05-09T07:52:30.775391+00:00",
       "categories": [
         "legal",
         "tecnologia"
@@ -2182,7 +2182,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><em>At Stripe, our Mexico City office is a vibrant hub at the forefront of our mission to reshape the financial landscape for businesses worldwide. Our team prioritizes collaboration, innovation, and excellence. As a member of the Mexico City team, you'll be part of a mission-driven community dedicated to enhancing the global economy and increasing the GDP of the internet. <br><br>We strive for excellence by creating with craft and beauty, while havin",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.444056+00:00",
+      "foundAt": "2026-05-09T07:52:30.811429+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -2213,7 +2213,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><em>At Stripe, our Mexico City office is a vibrant hub at the forefront of our mission to reshape the financial landscape for businesses worldwide. Our team prioritizes collaboration, innovation, and excellence. As a member of the Mexico City team, you'll be part of a mission-driven community dedicated to enhancing the global economy and increasing the GDP of the internet. <br><br>We strive for excellence by creating with craft and beauty, while havin",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.446417+00:00",
+      "foundAt": "2026-05-09T07:52:30.813787+00:00",
       "categories": [
         "datos",
         "rrhh"
@@ -2244,7 +2244,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy w",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.454941+00:00",
+      "foundAt": "2026-05-09T07:52:30.822324+00:00",
       "categories": [
         "datos",
         "marketing"
@@ -2275,7 +2275,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportu",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.457212+00:00",
+      "foundAt": "2026-05-09T07:52:30.824597+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -2307,7 +2307,7 @@
       "salary": "No publicado",
       "description": "<p><strong>About Stripe</strong></p> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing the ",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.459072+00:00",
+      "foundAt": "2026-05-09T07:52:30.826457+00:00",
       "categories": [
         "datos",
         "legal"
@@ -2338,7 +2338,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are </strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented op",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.466590+00:00",
+      "foundAt": "2026-05-09T07:52:30.833885+00:00",
       "categories": [
         "rrhh",
         "operaciones"
@@ -2371,7 +2371,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportu",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.497054+00:00",
+      "foundAt": "2026-05-09T07:52:30.864332+00:00",
       "categories": [
         "rrhh",
         "datos"
@@ -2401,7 +2401,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy w",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.634198+00:00",
+      "foundAt": "2026-05-09T07:52:31.000091+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -2433,7 +2433,7 @@
       "salary": "No publicado",
       "description": "<h2>Who we are</h2> <h3>About Stripe</h3> <p><span style=\"font-weight: 400;\">Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy wit",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.636460+00:00",
+      "foundAt": "2026-05-09T07:52:31.002480+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -2465,7 +2465,7 @@
       "salary": "No publicado",
       "description": "<h2><strong>Who we are</strong></h2> <h3><strong>About Stripe</strong></h3> <p>Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy w",
       "postedAt": "2026-05-04T11:52:00-04:00",
-      "foundAt": "2026-05-09T07:49:52.883581+00:00",
+      "foundAt": "2026-05-09T07:52:31.251078+00:00",
       "categories": [
         "datos",
         "tecnologia"
@@ -2496,7 +2496,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>This op",
       "postedAt": "2026-05-01T18:18:16-04:00",
-      "foundAt": "2026-05-09T07:49:50.542507+00:00",
+      "foundAt": "2026-05-09T07:52:28.961593+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -2527,7 +2527,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>GitLab is the intelligent orchestration platform for DevSecOps. GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation. More than 50 million registered users and more than 50% of the Fortune 100* trust GitLab to ship better, more secure software faster.</p> <p>The same principles built into our products are reflected in how our team works: we embrace ",
       "postedAt": "2026-05-01T13:08:34-04:00",
-      "foundAt": "2026-05-09T07:50:00.630354+00:00",
+      "foundAt": "2026-05-09T07:52:38.734601+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2558,7 +2558,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>GitLab is the intelligent orchestration platform for DevSecOps. GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation. More than 50 million registered users and more than 50% of the Fortune 100* trust GitLab to ship better, more secure software faster.</p> <p>The same principles built into our products are reflected in how our team works: we embrace ",
       "postedAt": "2026-04-30T18:34:50-04:00",
-      "foundAt": "2026-05-09T07:50:00.742293+00:00",
+      "foundAt": "2026-05-09T07:52:38.846880+00:00",
       "categories": [
         "rrhh",
         "tecnologia"
@@ -2590,7 +2590,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-04-30T12:45:35-04:00",
-      "foundAt": "2026-05-09T07:49:50.662076+00:00",
+      "foundAt": "2026-05-09T07:52:29.082132+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2619,7 +2619,7 @@
       "salary": "No publicado",
       "description": "Join Vonage and help us innovate cloud communications for businesses worldwide! Vonage Communications APIs As an emerging leader in the $10B+ communications API market, we empower global brands to connect better with their customers, employees, and partners through transformative communications experiences. Vonage API solutions empower organizations to build their custom omnichannel communications structure â reaching and engaging customers on their preferred schedule and channel, including vo",
       "postedAt": "2026-04-30T16:00:47+00:00",
-      "foundAt": "2026-05-09T07:49:49.985329+00:00",
+      "foundAt": "2026-05-09T07:52:28.471025+00:00",
       "categories": [
         "marketing",
         "diseño"
@@ -2658,7 +2658,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-04-29T18:33:23-04:00",
-      "foundAt": "2026-05-09T07:49:50.760269+00:00",
+      "foundAt": "2026-05-09T07:52:29.180612+00:00",
       "categories": [
         "tecnologia",
         "marketing"
@@ -2688,7 +2688,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-04-29T11:11:17-04:00",
-      "foundAt": "2026-05-09T07:49:50.454391+00:00",
+      "foundAt": "2026-05-09T07:52:28.872880+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2717,7 +2717,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-29T10:06:21-04:00",
-      "foundAt": "2026-05-09T07:49:58.841074+00:00",
+      "foundAt": "2026-05-09T07:52:37.020499+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2748,7 +2748,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-04-29T08:59:56-04:00",
-      "foundAt": "2026-05-09T07:49:50.423242+00:00",
+      "foundAt": "2026-05-09T07:52:28.841665+00:00",
       "categories": [
         "datos",
         "rrhh"
@@ -2779,7 +2779,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-04-29T08:56:39-04:00",
-      "foundAt": "2026-05-09T07:49:50.787779+00:00",
+      "foundAt": "2026-05-09T07:52:29.208460+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -2811,7 +2811,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><div><strong>About Us</strong></div> <div> <p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet prope",
       "postedAt": "2026-04-22T11:17:35-04:00",
-      "foundAt": "2026-05-09T07:49:56.590876+00:00",
+      "foundAt": "2026-05-09T07:52:34.830903+00:00",
       "categories": [
         "tecnologia",
         "ventas"
@@ -2844,7 +2844,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><div><strong>About Us</strong></div> <div> <p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet prope",
       "postedAt": "2026-04-21T15:53:17-04:00",
-      "foundAt": "2026-05-09T07:49:56.456138+00:00",
+      "foundAt": "2026-05-09T07:52:34.695428+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2874,7 +2874,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><div><strong>About Us</strong></div> <div> <p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet prope",
       "postedAt": "2026-04-21T15:53:17-04:00",
-      "foundAt": "2026-05-09T07:49:56.874693+00:00",
+      "foundAt": "2026-05-09T07:52:35.115947+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2907,7 +2907,7 @@
       "salary": "$40- $60k",
       "description": "We are seeking a versatile and highly skilled AI Engineer to join our fast-growing Full-Stack AI Solutions company. This role blends the expertise of building cutting-edge AI/ML models with the practical know-how of automation and agentic system integrations. You will design, develop, deploy, and optimize intelligent solutions that leverage the power of generative AI, automation platforms, and agent-based systems to enhance client operations, streamline workflows, and deliver measurable results.",
       "postedAt": "2026-04-21T08:16:20",
-      "foundAt": "2026-05-09T07:49:17.636039+00:00",
+      "foundAt": "2026-05-09T07:51:57.194411+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -2945,7 +2945,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-15T15:32:40-04:00",
-      "foundAt": "2026-05-09T07:49:58.442295+00:00",
+      "foundAt": "2026-05-09T07:52:36.620394+00:00",
       "categories": [
         "ventas",
         "diseño"
@@ -2976,7 +2976,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-15T15:32:40-04:00",
-      "foundAt": "2026-05-09T07:49:58.470408+00:00",
+      "foundAt": "2026-05-09T07:52:36.648560+00:00",
       "categories": [
         "ventas",
         "marketing"
@@ -3006,7 +3006,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-15T15:32:40-04:00",
-      "foundAt": "2026-05-09T07:49:58.488800+00:00",
+      "foundAt": "2026-05-09T07:52:36.666961+00:00",
       "categories": [
         "diseño",
         "tecnologia"
@@ -3037,7 +3037,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-15T15:32:40-04:00",
-      "foundAt": "2026-05-09T07:49:58.530030+00:00",
+      "foundAt": "2026-05-09T07:52:36.708220+00:00",
       "categories": [
         "rrhh",
         "diseño"
@@ -3068,7 +3068,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-15T15:32:40-04:00",
-      "foundAt": "2026-05-09T07:49:58.732575+00:00",
+      "foundAt": "2026-05-09T07:52:36.911223+00:00",
       "categories": [
         "marketing",
         "diseño"
@@ -3104,7 +3104,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p>Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration,",
       "postedAt": "2026-04-15T15:32:40-04:00",
-      "foundAt": "2026-05-09T07:49:58.823062+00:00",
+      "foundAt": "2026-05-09T07:52:37.002081+00:00",
       "categories": [
         "diseño",
         "rrhh"
@@ -3134,7 +3134,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><h3><span style=\"f",
       "postedAt": "2026-04-15T10:06:23-04:00",
-      "foundAt": "2026-05-09T07:49:50.501542+00:00",
+      "foundAt": "2026-05-09T07:52:28.920150+00:00",
       "categories": [
         "rrhh",
         "datos"
@@ -3165,7 +3165,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-04-14T05:52:46-04:00",
-      "foundAt": "2026-05-09T07:49:50.557855+00:00",
+      "foundAt": "2026-05-09T07:52:28.976990+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -3198,7 +3198,7 @@
       "salary": "$80k - $120k",
       "description": "We are hiring a contract-based Senior Frontend Developer for the garden3d creative collective with a focus on LATAM & Asia candidates. This job posting here in Remotive is for sharing purposes only and does not serve as the direct application for the role. To be considered, please complete our application form here to apply Original job posting link 🌎 About garden3d We are worker owned creative collective, innovating on everything from brands and IRL communities to IoT devices and cross platform",
       "postedAt": "2026-04-08T16:15:21",
-      "foundAt": "2026-05-09T07:49:17.653680+00:00",
+      "foundAt": "2026-05-09T07:51:57.211656+00:00",
       "categories": [
         "tecnologia",
         "diseño"
@@ -3237,7 +3237,7 @@
       "salary": "No publicado",
       "description": "Are you a detail-oriented individual with a passion for research and a good understanding of national and local geography? This freelance opportunity allows you to work at your own pace and from the comfort of your own home. A Day in the Life of an Online Data Analyst: In this role, you will be working on a project aimed at enhancing the content and quality of digital maps that are used by millions of people worldwide Completing research and evaluation tasks in a web-based environment such as ve",
       "postedAt": "2026-04-07T14:40:01",
-      "foundAt": "2026-05-09T07:49:17.654944+00:00",
+      "foundAt": "2026-05-09T07:51:57.212891+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -3273,7 +3273,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-03-30T16:37:40-04:00",
-      "foundAt": "2026-05-09T07:49:50.586570+00:00",
+      "foundAt": "2026-05-09T07:52:29.005993+00:00",
       "categories": [
         "tecnologia",
         "marketing"
@@ -3303,7 +3303,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-03-27T15:23:32-04:00",
-      "foundAt": "2026-05-09T07:49:50.279960+00:00",
+      "foundAt": "2026-05-09T07:52:28.698078+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -3332,7 +3332,7 @@
       "salary": "No publicado",
       "description": "We are looking for a Manager, Partner Product and Delivery, who will join our team spread across the globe, and help manage Spotify's important Premium Partnerships projects in Latin America. You will have the operational and day-to-day responsibility to manage the technical implementation and performance of the partnerships. You will report directly to the Associate Director, Partner Product and Delivery.",
       "postedAt": 1774602974059,
-      "foundAt": "2026-05-09T07:50:04.628296+00:00",
+      "foundAt": "2026-05-09T07:52:42.572633+00:00",
       "categories": [
         "marketing",
         "gerencia"
@@ -3362,7 +3362,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-03-17T19:44:42-04:00",
-      "foundAt": "2026-05-09T07:49:50.701024+00:00",
+      "foundAt": "2026-05-09T07:52:29.121171+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -3391,7 +3391,7 @@
       "salary": "No publicado",
       "description": "Sell what you love. For us and millions of users across the globe, that’s Spotify. Join the Sales team and you’ll build the relationships that help grow our business in existing markets and beyond. We don’t just sell creative solutions to our clients and partners, we help to shape them; using our expert knowledge of ad products, sales channels and the industry to impact the way the world experiences music and podcasts. Our Ad Sales Training & Enablement team helps Spotify’s global Sales organiza",
       "postedAt": 1773762812778,
-      "foundAt": "2026-05-09T07:50:04.633054+00:00",
+      "foundAt": "2026-05-09T07:52:42.577393+00:00",
       "categories": [
         "marketing",
         "diseño"
@@ -3422,7 +3422,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-03-12T14:33:40-04:00",
-      "foundAt": "2026-05-09T07:49:50.503711+00:00",
+      "foundAt": "2026-05-09T07:52:28.922339+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -3451,7 +3451,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-03-06T12:52:22-05:00",
-      "foundAt": "2026-05-09T07:49:50.653705+00:00",
+      "foundAt": "2026-05-09T07:52:29.073713+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -3480,7 +3480,7 @@
       "salary": "No publicado",
       "description": "Spotify is seeking an experienced, culturally-attuned leader to define and drive the editorial identity for music across Latin America. In this role, you will lead a high-performing team of editors, leveraging deep musical expertise and audience insights to build a regionally resonant content strategy. You will move beyond the traditional to shape a vision that drives discovery, deepens engagement, and reinforces Spotify’s role as the primary cultural authority in the Latin music landscape. As a",
       "postedAt": 1772540783495,
-      "foundAt": "2026-05-09T07:50:04.620556+00:00",
+      "foundAt": "2026-05-09T07:52:42.564798+00:00",
       "categories": [
         "datos",
         "marketing"
@@ -3510,7 +3510,7 @@
       "salary": "No publicado",
       "description": "Creative Business Strategies (CBS) is Spotify LATAM’s cultural innovation hub. We design and execute cross-functional cultural initiatives that strengthen Spotify’s leadership in Music Culture and power the Creator Flywheel across the region. A core pillar of this role is leading the operation and coordination of the programming at Casa Spotify as a cultural infrastructure in the market. Casa is a permanent, living platform where artists, creators, fans and industry connect through curated exper",
       "postedAt": 1772508725784,
-      "foundAt": "2026-05-09T07:50:04.614664+00:00",
+      "foundAt": "2026-05-09T07:52:42.558882+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -3542,7 +3542,7 @@
       "salary": "No publicado",
       "description": "Creative Business Strategies (CBS) is Spotify LATAM’s cultural innovation hub. We design and execute cross-functional cultural initiatives that strengthen Spotify’s leadership in Music Culture and power the Creator Flywheel across the region. A core pillar of this role is leading the operation and coordination of the programming at Casa Spotify as a cultural infrastructure in the market. Casa is a permanent, living platform where artists, creators, fans and industry connect through curated exper",
       "postedAt": 1772495579908,
-      "foundAt": "2026-05-09T07:50:04.615118+00:00",
+      "foundAt": "2026-05-09T07:52:42.559357+00:00",
       "categories": [
         "marketing",
         "datos"
@@ -3574,7 +3574,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-02-13T19:23:39-05:00",
-      "foundAt": "2026-05-09T07:49:50.260421+00:00",
+      "foundAt": "2026-05-09T07:52:28.678249+00:00",
       "categories": [
         "tecnologia",
         "marketing"
@@ -3604,7 +3604,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><span style=\"fo",
       "postedAt": "2026-02-11T18:19:23-05:00",
-      "foundAt": "2026-05-09T07:49:50.601163+00:00",
+      "foundAt": "2026-05-09T07:52:29.020713+00:00",
       "categories": [
         "tecnologia",
         "rrhh"
@@ -3633,7 +3633,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>This op",
       "postedAt": "2026-02-11T12:21:01-05:00",
-      "foundAt": "2026-05-09T07:49:50.353575+00:00",
+      "foundAt": "2026-05-09T07:52:28.772011+00:00",
       "categories": [
         "rrhh",
         "ventas"
@@ -3665,7 +3665,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-02-10T04:01:05-05:00",
-      "foundAt": "2026-05-09T07:49:50.397454+00:00",
+      "foundAt": "2026-05-09T07:52:28.815901+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -3698,7 +3698,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-02-10T03:53:05-05:00",
-      "foundAt": "2026-05-09T07:49:50.403286+00:00",
+      "foundAt": "2026-05-09T07:52:28.821737+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -3731,7 +3731,7 @@
       "salary": "No publicado",
       "description": "<div class=\"content-intro\"><p><span style=\"font-family: helvetica, arial, sans-serif; font-size: 12pt;\">Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</span></p></div><p><strong>The Com",
       "postedAt": "2026-02-10T03:53:01-05:00",
-      "foundAt": "2026-05-09T07:49:50.400719+00:00",
+      "foundAt": "2026-05-09T07:52:28.819181+00:00",
       "categories": [
         "rrhh",
         "marketing"
@@ -3764,7 +3764,7 @@
       "salary": "No publicado",
       "description": "The Marketing Team in Latin America plays a meaningful role in defining and driving Spotify’s Brand in the region. Marketing Managers in Mexico are responsible for the Marketing activities in the country. The position reports into the Mexico Marketing Lead. We are seeking an outstanding marketer who is passionate about music culture, with a proven track record of driving innovative social marketing strategies and initiatives, fostering significant partnerships, and delivering impactful, cross-fu",
       "postedAt": 1741035697050,
-      "foundAt": "2026-05-09T07:50:04.646071+00:00",
+      "foundAt": "2026-05-09T07:52:42.590436+00:00",
       "categories": [
         "marketing",
         "rrhh"
@@ -3796,7 +3796,7 @@
       "salary": "No publicado",
       "description": "About the team OpenAI’s mission is to ensure the responsible and widespread adoption of artificial intelligence. In support of that mission, the Ads Solutions team partners closely with advertisers to deeply understand their businesses and needs, helping inform the development of products and solutions that drive meaningful revenue growth and long-term success on the platform—while maintaining strong standards for user trust and platform integrity. About the role We’re looking for a Customer Suc",
       "postedAt": "",
-      "foundAt": "2026-05-09T07:50:07.784866+00:00",
+      "foundAt": "2026-05-09T07:52:45.561342+00:00",
       "categories": [
         "datos",
         "rrhh"
@@ -3826,7 +3826,7 @@
       "salary": "$261K – $352K • Offers Equity · {'compensationType': 'Salary', 'interval': '1 YEAR', 'currencyCode': 'USD', 'minValue': 261000, 'maxValue': 352000} · {'compensationType': 'EquityCashValue', 'interval': '1 YEAR', 'currencyCode': 'USD', 'minValue': None, 'maxValue': None}",
       "description": "About the Team OpenAI’s mission is to ensure the responsible and widespread adoption of artificial intelligence. In support of that mission, the Ads Solutions team partners closely with advertisers to deeply understand their businesses and needs, helping inform the development of products and solutions that drive meaningful revenue growth and long-term success on the platform—while maintaining strong standards for user trust and platform integrity. About the Role This role is focused on driving ",
       "postedAt": "",
-      "foundAt": "2026-05-09T07:50:07.871756+00:00",
+      "foundAt": "2026-05-09T07:52:45.648341+00:00",
       "categories": [
         "marketing",
         "tecnologia"
@@ -3859,7 +3859,7 @@
       "salary": "No publicado",
       "description": "About the Team We bring OpenAI’s brand to life around the world. As a multidisciplinary creative team, we design work that connects meaningfully with local cultures — from flagship global campaigns and international events to deeply localized moments. In close collaboration with the U.S. Creative Studio, as well as global and regional marketing teams, agencies, and creators, we ensure OpenAI’s brand principles are honored, protected, and expressed responsibly everywhere people meet our products.",
       "postedAt": "",
-      "foundAt": "2026-05-09T07:50:08.791142+00:00",
+      "foundAt": "2026-05-09T07:52:46.572542+00:00",
       "categories": [
         "tecnologia",
         "diseño"
@@ -3894,7 +3894,7 @@
       "salary": "No publicado",
       "description": "About Ramp Ramp is building the smart infrastructure for finance teams, embedded in the transaction flow of every dollar a business spends. We automate how over $100B in annualized spend flows in and out of 50,000+ companies: authorizing payments, flagging risk, categorizing spend, and closing books. The problems are high-stakes, data-dense, and unforgiving. We hire people with high agency and high urgency. We look for slope over intercept. We care less about where you trained and more about wha",
       "postedAt": "",
-      "foundAt": "2026-05-09T07:50:14.376329+00:00",
+      "foundAt": "2026-05-09T07:52:51.598668+00:00",
       "categories": [
         "tecnologia",
         "finanzas"
