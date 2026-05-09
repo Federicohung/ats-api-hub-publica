@@ -84,8 +84,14 @@ jobs:
           LINKEDIN_RAPIDAPI_KEY: ${{ secrets.LINKEDIN_RAPIDAPI_KEY }}
           LINKEDIN_RAPIDAPI_HOST: ${{ vars.LINKEDIN_RAPIDAPI_HOST }}
           LINKEDIN_RAPIDAPI_PATH: ${{ vars.LINKEDIN_RAPIDAPI_PATH }}
+          LINKEDIN_API2_RAPIDAPI_KEY: ${{ secrets.LINKEDIN_API2_RAPIDAPI_KEY }}
+          LINKEDIN_API2_RAPIDAPI_HOST: ${{ vars.LINKEDIN_API2_RAPIDAPI_HOST }}
+          LINKEDIN_API2_RAPIDAPI_PATH: ${{ vars.LINKEDIN_API2_RAPIDAPI_PATH }}
           LINKEDIN_SEARCH_TITLES: ${{ vars.LINKEDIN_SEARCH_TITLES }}
           LINKEDIN_SEARCH_LOCATIONS: ${{ vars.LINKEDIN_SEARCH_LOCATIONS }}
+          INDEED12_RAPIDAPI_KEY: ${{ secrets.INDEED12_RAPIDAPI_KEY }}
+          INDEED12_COMPANIES: ${{ vars.INDEED12_COMPANIES }}
+          INDEED12_LOCALITIES: ${{ vars.INDEED12_LOCALITIES }}
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
@@ -107,6 +113,7 @@ jobs:
         run: |
           python scraper/api_scraper.py
           python scraper/linkedin_rapidapi_scraper.py
+          python scraper/indeed12_rapidapi_scraper.py
 
       - name: Keep only Spanish LATAM Spain and Caribbean jobs
         run: |
