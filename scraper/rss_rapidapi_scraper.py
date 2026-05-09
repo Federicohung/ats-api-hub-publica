@@ -35,7 +35,7 @@ COUNTRY_CODES = env_list('RSS_JOB_COUNTRY_CODES', [
     'uy',
     'cr',
 ])
-HAS_SALARY = (os.environ.get('RSS_JOB_HAS_SALARY') or 'true').lower() in {'1', 'true', 'yes'}
+HAS_SALARY_FILTER = os.environ.get('RSS_JOB_HAS_SALARY')
 
 
 def pick(obj, *keys):
@@ -100,12 +100,13 @@ def scrape_rss_rapidapi():
             print(f'RapidAPI RSS jobs: stopped after {MAX_REQUESTS} requests to protect quota')
             return jobs
 
-        params = urlencode({
+        params = {
             'page': 1,
             'countryCode': country_code,
-            'hasSalary': str(HAS_SALARY).lower(),
-        })
-        url = f'https://{HOST}/api/rss/v1/jobs_full?{params}'
+        }
+        if HAS_SALARY_FILTER is not None:
+            params['hasSalary'] = HAS_SALARY_FILTER.lower() in {'1', 'true', 'yes'}
+        url = f'https://{HOST}/api/rss/v1/jobs_full?{urlencode(params)}'
         status, data = http_get(url, headers=headers, timeout=25)
         request_count += 1
         if status != 200:
@@ -137,8 +138,6 @@ def scrape_rss_rapidapi():
             seen_urls.add(job_url)
 
             tags = ['RSS Feed', 'RapidAPI', country_code]
-            if HAS_SALARY:
-                tags.append('hasSalary')
             jobs.append(make_job(
                 source='rss_rapidapi',
                 source_url=job_url,
