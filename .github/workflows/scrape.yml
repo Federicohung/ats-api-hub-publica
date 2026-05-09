@@ -24,6 +24,11 @@ jobs:
       - name: Scrape job APIs and ATS providers
         env:
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          LINKEDIN_RAPIDAPI_KEY: ${{ secrets.LINKEDIN_RAPIDAPI_KEY }}
+          LINKEDIN_RAPIDAPI_HOST: ${{ vars.LINKEDIN_RAPIDAPI_HOST }}
+          LINKEDIN_RAPIDAPI_PATH: ${{ vars.LINKEDIN_RAPIDAPI_PATH }}
+          LINKEDIN_SEARCH_TITLES: ${{ vars.LINKEDIN_SEARCH_TITLES }}
+          LINKEDIN_SEARCH_LOCATIONS: ${{ vars.LINKEDIN_SEARCH_LOCATIONS }}
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
@@ -42,7 +47,9 @@ jobs:
           SPANISH_SEARCH_QUERIES: ${{ vars.SPANISH_SEARCH_QUERIES }}
           SPANISH_JOB_QUERIES: ${{ vars.SPANISH_JOB_QUERIES }}
           LATAM_SPAIN_LOCATIONS: ${{ vars.LATAM_SPAIN_LOCATIONS }}
-        run: python scraper/api_scraper.py
+        run: |
+          python scraper/api_scraper.py
+          python scraper/linkedin_rapidapi_scraper.py
 
       - name: Commit generated data
         uses: stefanzweifel/git-auto-commit-action@v5
