@@ -1,5 +1,12 @@
 const CHECKS = [
   {
+    id: 'google_jobs_rapidapi',
+    label: 'Google Jobs API',
+    key: 'GOOGLE_JOBS_RAPIDAPI_KEY',
+    host: 'google-jobs-api.p.rapidapi.com',
+    url: 'https://google-jobs-api.p.rapidapi.com/google-jobs/relocation?include=senior%20engineer',
+  },
+  {
     id: 'jsearch',
     label: 'JSearch',
     key: 'JSEARCH_RAPIDAPI_KEY',
