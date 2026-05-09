@@ -7,6 +7,7 @@ const PROVIDERS = [
   ['RSS_RAPIDAPI_KEY', 'RSS Jobs API RapidAPI'],
   ['JOBS_API14_RAPIDAPI_KEY', 'Jobs API RapidAPI'],
   ['JOBS_SEARCH_RAPIDAPI_KEY', 'Jobs Search API RapidAPI'],
+  ['GOOGLE_JOBS_RAPIDAPI_KEY', 'Google Jobs API RapidAPI'],
   ['ADZUNA_APP_ID', 'Adzuna App ID'],
   ['ADZUNA_APP_KEY', 'Adzuna App Key'],
   ['JOOBLE_API_KEY', 'Jooble'],
