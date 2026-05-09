@@ -14,7 +14,7 @@ from api_scraper import (
 )
 
 HOST = 'indeed12.p.rapidapi.com'
-KEY = os.environ.get('INDEED12_RAPIDAPI_KEY') or os.environ.get('RAPIDAPI_KEY')
+KEY = os.environ.get('INDEED12_RAPIDAPI_KEY')
 MAX_REQUESTS = int(os.environ.get('INDEED12_MAX_REQUESTS') or '6')
 STOP_STATUSES = {401, 403, 429}
 
@@ -84,7 +84,7 @@ def posted_at_sort_value(value):
 
 def scrape_indeed12():
     if not KEY:
-        print('Indeed12 RapidAPI: skipped (requires INDEED12_RAPIDAPI_KEY or RAPIDAPI_KEY)')
+        print('Indeed12 RapidAPI: skipped (requires INDEED12_RAPIDAPI_KEY)')
         return []
 
     headers = {
