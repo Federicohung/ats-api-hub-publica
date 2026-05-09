@@ -44,26 +44,26 @@ jobs:
                   'from urllib.error import URLError, HTTPError\nfrom urllib.parse import quote\n',
               )
 
-          helper = """
-def posted_at_sort_value(value):
-    if value is None:
-        return 0
-    if isinstance(value, (int, float)):
-        timestamp = float(value)
-        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp
-    text = str(value).strip()
-    if not text:
-        return 0
-    if text.isdigit():
-        timestamp = float(text)
-        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp
-    try:
-        normalized = text.replace('Z', '+00:00')
-        return datetime.fromisoformat(normalized).timestamp()
-    except ValueError:
-        return 0
-
-"""
+          helper = (
+              "\n"
+              "def posted_at_sort_value(value):\n"
+              "    if value is None:\n"
+              "        return 0\n"
+              "    if isinstance(value, (int, float)):\n"
+              "        timestamp = float(value)\n"
+              "        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp\n"
+              "    text = str(value).strip()\n"
+              "    if not text:\n"
+              "        return 0\n"
+              "    if text.isdigit():\n"
+              "        timestamp = float(text)\n"
+              "        return timestamp / 1000 if timestamp > 10_000_000_000 else timestamp\n"
+              "    try:\n"
+              "        normalized = text.replace('Z', '+00:00')\n"
+              "        return datetime.fromisoformat(normalized).timestamp()\n"
+              "    except ValueError:\n"
+              "        return 0\n\n"
+          )
           if 'def posted_at_sort_value(' not in text:
               text = text.replace(
                   "def make_id(source, source_id):\n",
