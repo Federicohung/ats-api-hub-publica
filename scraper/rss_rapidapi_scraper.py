@@ -1,21 +1,23 @@
 import json
 import os
 import time
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 from api_scraper import (
     DATA_FILE,
     DOCS_DATA_FILE,
     CATEGORY_KEYWORDS,
     deduplicate,
-    http_get,
     make_job,
 )
 
 HOST = 'job-postings-rss-feed.p.rapidapi.com'
 KEY = os.environ.get('RSS_RAPIDAPI_KEY')
-MAX_REQUESTS = int(os.environ.get('RSS_JOB_MAX_REQUESTS') or '8')
+MAX_REQUESTS = int(os.environ.get('RSS_JOB_MAX_REQUESTS') or '6')
 STOP_STATUSES = {401, 403, 429}
 
 
@@ -32,10 +34,48 @@ COUNTRY_CODES = env_list('RSS_JOB_COUNTRY_CODES', [
     'cl',
     'ar',
     'pe',
-    'uy',
-    'cr',
 ])
-HAS_SALARY_FILTER = os.environ.get('RSS_JOB_HAS_SALARY')
+
+SPANISH_HINTS = [
+    ' de ', ' del ', ' la ', ' el ', ' los ', ' las ', ' para ', ' con ', ' en ',
+    ' experiencia ', ' requisitos ', ' responsabilidades ', ' buscamos ',
+    ' candidato ', ' equipo ', ' trabajo ', ' remoto ', ' presencial ',
+    ' jornada ', ' salario ', ' beneficios ', ' conocimientos ', ' habilidades ',
+    ' espanol ', ' español ', ' ventas ', ' comercial ', ' atencion ', ' atención ',
+    ' desarrollador ', ' ingeniero ', ' analista ', ' administracion ', ' administración ',
+]
+
+
+def strip_ns(tag):
+    return tag.split('}', 1)[-1].lower() if '}' in tag else tag.lower()
+
+
+def node_text(node, *names):
+    wanted = {name.lower() for name in names}
+    for child in list(node):
+        if strip_ns(child.tag) in wanted:
+            return ''.join(child.itertext()).strip()
+    return ''
+
+
+def http_get_text(url, headers=None, timeout=25):
+    hdrs = {
+        'User-Agent': 'Mozilla/5.0 JobHub-API/1.0',
+        'Accept': 'application/json, application/rss+xml, application/xml, text/xml, */*',
+    }
+    if headers:
+        hdrs.update(headers)
+    req = Request(url, headers=hdrs)
+    try:
+        resp = urlopen(req, timeout=timeout)
+        body = resp.read().decode('utf-8', errors='replace')
+        return resp.status, body
+    except HTTPError as e:
+        body = e.read().decode('utf-8', errors='replace') if e.fp else ''
+        return e.code, body
+    except (URLError, Exception) as e:
+        print(f'RapidAPI RSS jobs request failed: {e}')
+        return 0, ''
 
 
 def pick(obj, *keys):
@@ -46,20 +86,72 @@ def pick(obj, *keys):
     return ''
 
 
-def extract_items(data):
+def parse_json_items(data):
     if isinstance(data, list):
         return data
     if not isinstance(data, dict):
         return []
-    for key in ('data', 'jobs', 'items', 'results', 'job_results', 'list'):
+    for key in ('data', 'jobs', 'items', 'results', 'job_results', 'list', 'rss', 'feed'):
         value = data.get(key)
         if isinstance(value, list):
             return value
         if isinstance(value, dict):
-            nested = extract_items(value)
+            nested = parse_json_items(value)
             if nested:
                 return nested
     return []
+
+
+def parse_xml_items(text):
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError:
+        return []
+
+    items = []
+    for item in root.iter():
+        if strip_ns(item.tag) not in {'item', 'entry'}:
+            continue
+        title = node_text(item, 'title')
+        link = node_text(item, 'link')
+        if not link:
+            for child in list(item):
+                if strip_ns(child.tag) == 'link' and child.attrib.get('href'):
+                    link = child.attrib.get('href')
+                    break
+        description = node_text(item, 'description', 'summary', 'content', 'encoded')
+        company = node_text(item, 'company', 'company_name', 'employer', 'organization')
+        location = node_text(item, 'location', 'job_location', 'formatted_location', 'city', 'country')
+        salary = node_text(item, 'salary', 'salary_range', 'compensation')
+        posted_at = node_text(item, 'pubDate', 'published', 'updated', 'date')
+        items.append({
+            'title': title,
+            'link': link,
+            'description': description,
+            'company': company,
+            'location': location,
+            'salary': salary,
+            'published': posted_at,
+        })
+    return items
+
+
+def extract_items(text):
+    if not text:
+        return []
+    try:
+        data = json.loads(text)
+        items = parse_json_items(data)
+        if items:
+            return items
+    except json.JSONDecodeError:
+        pass
+    return parse_xml_items(text)
+
+
+def spanish_content_score(*parts):
+    text = ' ' + ' '.join(str(part or '').lower() for part in parts) + ' '
+    return sum(1 for hint in SPANISH_HINTS if hint in text)
 
 
 def posted_at_sort_value(value):
@@ -104,10 +196,8 @@ def scrape_rss_rapidapi():
             'page': 1,
             'countryCode': country_code,
         }
-        if HAS_SALARY_FILTER is not None:
-            params['hasSalary'] = HAS_SALARY_FILTER.lower() in {'1', 'true', 'yes'}
         url = f'https://{HOST}/api/rss/v1/jobs_full?{urlencode(params)}'
-        status, data = http_get(url, headers=headers, timeout=25)
+        status, body = http_get_text(url, headers=headers, timeout=30)
         request_count += 1
         if status != 200:
             print(f'RapidAPI RSS jobs {country_code}: HTTP {status}')
@@ -116,9 +206,9 @@ def scrape_rss_rapidapi():
                 return jobs
             continue
 
-        items = extract_items(data)
+        items = extract_items(body)
         print(f'RapidAPI RSS jobs {country_code}: {len(items)} jobs')
-        for item in items:
+        for item in items[:500]:
             if not isinstance(item, dict):
                 continue
 
@@ -137,7 +227,13 @@ def scrape_rss_rapidapi():
                 continue
             seen_urls.add(job_url)
 
+            score = spanish_content_score(title, location, description)
+            if country_code not in {'es', 'mx', 'co', 'cl', 'ar', 'pe'} and score < 3:
+                continue
+
             tags = ['RSS Feed', 'RapidAPI', country_code]
+            if score >= 3:
+                tags.append('Contenido en espanol')
             jobs.append(make_job(
                 source='rss_rapidapi',
                 source_url=job_url,
@@ -152,7 +248,7 @@ def scrape_rss_rapidapi():
                 apply_url=job_url,
                 tags=tags,
             ))
-            time.sleep(1)
+        time.sleep(2)
     return jobs
 
 
