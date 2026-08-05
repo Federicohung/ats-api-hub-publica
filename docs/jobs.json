@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "schema": "api-aggregator",
-  "updatedAt": "2026-08-05T10:25:44.308664+00:00",
+  "updatedAt": "2026-08-05T10:46:46.601187+00:00",
   "totalJobs": 126,
   "sources": {
     "ashby": 6,
