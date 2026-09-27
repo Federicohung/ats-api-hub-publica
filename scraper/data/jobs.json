@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "schema": "api-aggregator",
-  "updatedAt": "2026-09-27T22:42:05.830945+00:00",
+  "updatedAt": "2026-09-27T23:06:24.367573+00:00",
   "totalJobs": 149,
   "sources": {
     "arbeitnow": 10,
